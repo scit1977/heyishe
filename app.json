@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/address/address",
+     "pages/orders/orders",
+     "pages/help/help",
+    "pages/classify/classify",
+    "pages/detail/detail",
+    "pages/template/template",
+    "pages/cart/cart", 
+    "pages/myorder/myorder",    
+    "pages/personal/personal",
+    "pages/authorize/authorize"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "和一舍",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#858585",
+    "selectedColor": "#f0145a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "iconPath": "images/classify.png",
+        "selectedIconPath": "images/classify_select.png",
+        "text": "服务项目"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "images/cart.png",
+        "selectedIconPath": "images/cart_select.png",
+        "text": "购物车"
+      },   
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine_select.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

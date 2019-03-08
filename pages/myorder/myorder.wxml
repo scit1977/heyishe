@@ -1,0 +1,31 @@
+<!--pages/myorder/myorder.wxml-->
+
+    <view class="orders">
+        <view class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
+            <view class="h">
+                <view class="l">订单编号：{{item.id}}</view>
+                <view class="r">{{item.add_time}}</view>
+            </view>
+            <view class="goods" >
+                <view class="img">
+                    <image src="{{item.goods_img}}"></image>
+                </view>
+                <view class="info">
+                    <text class="name">{{item.goods_name}}</text>
+                    <text class="number">共{{item.goods_num}}件</text>
+                </view>
+                <view class="status"></view>
+            </view>
+            <view class="b">
+                <view class="l">实付：￥{{item.goods_price_all}}</view>
+               
+            </view>
+        </view>
+  
+
+   <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+</view>
+

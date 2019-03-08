@@ -1,0 +1,9 @@
+/* pages/help/help.wxss */
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0 0rpx;
+}
+
+.page-body-button {
+  margin-bottom: 10rpx;
+}

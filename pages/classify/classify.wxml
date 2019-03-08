@@ -1,0 +1,35 @@
+<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loadImages">
+  <view class="goods" style="width:100%">
+    <view class="img_item">
+      <view wx:for="{{col1}}"  wx:key="id">
+      <view class="item_info" catchtap="catchTap_item" data-goodsid="{{item.goodid}}">
+        <image src="{{item.imageurl}}" style="width:100%;"></image>
+      </view>
+            <view class="product-name">
+              {{item.name}}
+            </view>
+            <view class="product-price-wrap">
+              <p class="product-price-new">￥{{item.newprice}}</p>  
+              
+            </view>
+      </view>
+    </view>
+    <view class="img_item">
+      <view wx:for="{{col2}}"   wx:key="id">
+      <view class="item_info" catchtap="catchTap_item" data-goodsid="{{item.goodid}}">
+        <image src="{{item.imageurl}}" style="width:100%;"></image>
+      </view>
+            <view class="product-name">
+              {{item.name}}
+            </view>
+            <view class="product-price-wrap">
+              <p class="product-price-new">￥{{item.newprice}}</p>  
+                
+            </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+ <view style="display:none">
+  <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.imageurl}}" bindload="onImageLoad"></image>
+</view> 

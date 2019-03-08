@@ -1,0 +1,17 @@
+<!--pages/home/home.wxml-->
+ 
+
+  <!-- banner -->
+  
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}"  mode="aspectFill"  catchtap="show"/>
+      </swiper-item>
+    </block>
+  </swiper>   
+
+<view class="jianjie"> 
+<text decode="true" space="true">{{jianjie_txt}}</text>
+
+</view>

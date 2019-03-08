@@ -1,0 +1,11 @@
+<!--pages/address/address.wxml-->
+<view class="main">
+    <view class="form-box">
+        <form bindsubmit="formSubmit">
+            <input value="{{address.name}}" name="name" placeholder="姓名"/>
+            <input type="tel" name="tel" value="{{address.tel}}" placeholder="手机号码"/>
+            <input name="address" value="{{address.address}}" placeholder="详细地址"/>
+            <button form-type="submit">保存</button>
+        </form>
+    </view>
+</view>
