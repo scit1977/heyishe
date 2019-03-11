@@ -2,16 +2,16 @@
   "pages": [
     "pages/home/home",
     "pages/address/address",
-     "pages/orders/orders",
-     "pages/help/help",
+    "pages/orders/orders",
+    "pages/help/help",
     "pages/classify/classify",
     "pages/detail/detail",
     "pages/template/template",
-    "pages/cart/cart", 
-    "pages/myorder/myorder",    
+    "pages/cart/cart",
+    "pages/myorder/myorder",
     "pages/personal/personal",
     "pages/authorize/authorize",
-    "pages/charge/charge"
+    "pages/charge/charge"    
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -48,7 +48,7 @@
         "iconPath": "images/cart.png",
         "selectedIconPath": "images/cart_select.png",
         "text": "购物车"
-      },   
+      },
       {
         "pagePath": "pages/personal/personal",
         "iconPath": "images/mine.png",

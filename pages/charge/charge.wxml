@@ -1,0 +1,23 @@
+<!--pages/charge/charge.wxml-->
+<view class="cpage">
+    <view class="top">
+      <image src="{{imgsrc}}"  mode="widthFix"  />
+    </view>
+    <view class='radios'>
+        <radio-group class="radio-group" bindchange="radioChange">
+        <view class='line'>
+          <label class="radio" wx:for="{{items}}">
+            <radio value="{{item.price}}" checked="{{item.checked}}" />
+            {{item.charge_shuoming}}
+           </label>
+        </view>
+    </radio-group>
+    </view>
+    <view class="padding light-bg bottom-0">
+
+        <button class="page-body-button" type="primary" bindtap='immeBuy'>充值
+
+        </button>
+</view>
+</view>
+
