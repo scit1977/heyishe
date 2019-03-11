@@ -10,7 +10,8 @@
     "pages/cart/cart", 
     "pages/myorder/myorder",    
     "pages/personal/personal",
-    "pages/authorize/authorize"
+    "pages/authorize/authorize",
+    "pages/charge/charge"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -35,6 +36,12 @@
         "iconPath": "images/classify.png",
         "selectedIconPath": "images/classify_select.png",
         "text": "服务项目"
+      },
+      {
+        "pagePath": "pages/charge/charge",
+        "iconPath": "images/charge.png",
+        "selectedIconPath": "images/charge_select.png",
+        "text": "充值"
       },
       {
         "pagePath": "pages/cart/cart",
