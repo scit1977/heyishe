@@ -16,7 +16,7 @@ Page({
 
   onShow: function () {
     var arr = wx.getStorageSync('orders') || [];
-   // console.info("orders.js 缓存数据：" + arr);
+    console.info("orders.js 缓存数据：" + arr[0]['title']);
     // 有数据的话，就遍历数据，计算总金额 和 总数量  
     if (arr.length > 0) {
       // 更新数据  

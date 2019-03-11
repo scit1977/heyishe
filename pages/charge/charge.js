@@ -46,13 +46,12 @@ Page({
           that.setData({
             // loadingCount: orderList.length,
             items: res.data.result,
-            price: res.data.result[0].price
+            price: 10000.00
           });
-         // var index = 1  //此处可以选择设置 需要选中的下标
-        console.log(that.data.items[0])
-         // console.log(that.data.items[0].value)
-         // that.data.items[index].checked = "true"
-
+      
+          that.setData({
+            items: that.data.items
+          }) 
         }
         else {
           //没有更多新内容
@@ -85,9 +84,9 @@ Page({
   // 立即购买
   immeBuy() {
     var goods;
-    console.log('this.data.price=' + this.data.price)
+   // console.log('this.data.price=' + this.data.price)
     for (var i = 0; i < this.data.items.length; i++) {
-      console.log(this.data.items[i])
+      //console.log(this.data.items[i])
       if (this.data.items[i].price == this.data.price) {
         goods = this.data.items[i]
       }

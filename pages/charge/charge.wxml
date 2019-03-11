@@ -8,7 +8,7 @@
         <view class='line'>
           <label class="radio" wx:for="{{items}}">
             <radio value="{{item.price}}" checked="{{item.checked}}" />
-            {{item.charge_shuoming}}
+            {{item.name}}
            </label>
         </view>
     </radio-group>
