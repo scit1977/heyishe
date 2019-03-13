@@ -11,8 +11,8 @@
 
 <view class="line"></view>
 
-
-
+<view class='balance'>{{tname}},您的账户余额为{{balance}}元。</view>
+<view class="separate"></view>
 <view class="separate"></view>
 <view class="user-menu">
     <view class="item">
@@ -24,7 +24,13 @@
     <view class="item">
       <navigator url="../address/address"  class="a">
         <text class="icon address"></text>
-        <text class="txt">地址管理</text>
+        <text class="txt">个人信息</text>
+      </navigator>
+    </view>
+     <view class="item">
+      <navigator url="../consume/consume" class="a">
+        <text class="icon order"></text>
+        <text class="txt">我的消费</text>
       </navigator>
     </view>
      <view class="item">

@@ -8,6 +8,7 @@
     "pages/detail/detail",
     "pages/template/template",
     "pages/cart/cart",
+    "pages/consume/consume",
     "pages/myorder/myorder",
     "pages/personal/personal",
     "pages/authorize/authorize",
