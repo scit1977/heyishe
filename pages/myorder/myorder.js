@@ -5,7 +5,27 @@ Page({
     page: 1,//默认第一页    
     isHideLoadMore: true,   
     nomore: false,    
-    uid:''
+    uid:''   
+  },
+  bindViewTap_sy:function(){
+    wx.switchTab({
+      url: '../home/home'
+    })
+  },
+  bindViewTap_xm: function () {
+    wx.switchTab({
+      url: '../classify/classify'
+    })
+  },
+  bindViewTap_cz: function () {
+    wx.switchTab({
+      url: '../charge/charge'
+    })
+  },
+  bindViewTap_me: function () {
+    wx.switchTab({
+      url: '../personal/personal'
+    })
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -29,6 +49,7 @@ Page({
     }) 
     this.loadmyorders();
   },
+
   //下拉刷新
   onPullDownRefresh: function () {
     console.log('下拉刷新')

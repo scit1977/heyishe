@@ -13,9 +13,9 @@
         </view>
     </radio-group>
     </view>
-    <view class="padding light-bg bottom-0">
+    <view class="">
 
-        <button class="page-body-button" type="primary" bindtap='immeBuy'>充值
+        <button class="page-body-button" type="primary" bindtap='immeBuy'>立刻充值
 
         </button>
 </view>
