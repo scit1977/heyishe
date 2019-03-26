@@ -76,6 +76,7 @@ Page({
     var orderId = this.data.orderId;
     var orders = this.data.orders;
     var address = this.data.address;
+    console.log(orders);
     wx.login({
       success: res => {
 

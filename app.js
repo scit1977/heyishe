@@ -79,7 +79,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    urlPath:'https://v.hnradio.com/wxShop/',
+    urlPath:'https://wx.heyishe.cn/wxshop/',
     openid: ''
   }
 })

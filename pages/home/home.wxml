@@ -1,7 +1,5 @@
 <!--pages/home/home.wxml-->
- 
-
-  <!-- banner -->
+ <import src="../../wxParse/wxParse.wxml"/>
   
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
     <block wx:for="{{imgUrls}}">
@@ -10,8 +8,7 @@
       </swiper-item>
     </block>
   </swiper>   
-
-<view class="jianjie"> 
-<text decode="true" space="true">{{jianjie_txt}}</text>
-
-</view>
+ <view class="contents">
+       <!--<text >{{details.jianjie}}</text>-->
+       <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+     </view> 

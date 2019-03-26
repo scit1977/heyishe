@@ -97,6 +97,7 @@ Page({
           buyRate: goodsItem.buyRate,
           goodsId: goodsId,
           p_detail: goodsItem.p_detail,
+          p_type: goodsItem.p_type,
           count: 1,
           totalMoney: goodsItem.price,
         }

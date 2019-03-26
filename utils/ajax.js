@@ -1,4 +1,4 @@
-const api = 'https://v.hnradio.com/wxShop/';
+const api = 'https://wx.heyishe.cn/wxshop/';
 //const api = 'https://www.heyish.cn/wxshop/';
 // common.js
 function request(opt) {

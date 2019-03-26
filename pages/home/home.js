@@ -51,6 +51,8 @@ Page({
             imgUrls: res.data.imgs,
             jianjie_txt: res.data.jianjie_txt
           });
+          var WxParse = require('../../wxParse/wxParse.js');
+          WxParse.wxParse('content', 'html', that.data.jianjie_txt, that, 25);
 
         }
         else {
