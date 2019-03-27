@@ -24,7 +24,7 @@ Page({
         let wh = res.windowHeight;
         let imgWidth = ww * 0.48;
         let scrollH = wh;
-        console.log('page=' + page)
+       // console.log('page=' + page)
         this.setData({
           scrollH: scrollH,
           imgWidth: imgWidth
@@ -80,7 +80,7 @@ Page({
       col1: col1,
       col2: col2
     };
-    console.log('loadingCount=' + loadingCount)
+   // console.log('loadingCount=' + loadingCount)
     //当前这组图片已加载完毕，则清空图片临时加载区域的内容
     if (!loadingCount) {
       data.images = [];
@@ -91,8 +91,8 @@ Page({
 
   loadImages: function () {
     //if (ifLoadMore) {
-    console.log('load Images')
-    console.log('page='+page)
+   // console.log('load Images')
+    //console.log('page='+page)
     //调取商品信息
     let images=[];
     var that = this;
@@ -136,10 +136,10 @@ Page({
   },//end of load image
   catchTap_item: function (e) {
     var that = this;
-    console.log(e)
-    console.log('e.currentTarget.dataset=' + e.currentTarget.dataset)
+    //console.log(e)
+    //console.log('e.currentTarget.dataset=' + e.currentTarget.dataset)
     var goodsId = e.currentTarget.dataset.goodsid;
-    console.log('classify goodsId:' + goodsId);
+   // console.log('classify goodsId:' + goodsId);
     //新增商品用户点击数量
     //that.goodsClickShow(goodsId);
     //跳转商品详情

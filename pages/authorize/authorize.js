@@ -13,10 +13,11 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               //从数据库获取用户信息
-              that.queryUsreInfo();
+              //that.queryUsreInfo();
+              that.globalData.userInfo = res.userInfo
               //用户已经授权过
               wx.switchTab({
-                url: '/pages/index/index'
+                url: '/pages/personal/personal'
               })
             }
           });
@@ -47,9 +48,11 @@ Page({
         },
         success: function (res) {
           //从数据库获取用户信息
-          // that.queryUsreInfo();
+          //that.queryUsreInfo();
+          app.globalData.userInfo = e.detail.userInfo
           console.log(res.data)
           console.log("插入小程序登录用户信息成功！");
+          console.log(app.globalData.userInfo)
         }
       });
       //授权成功后，跳转进入小程序首页
@@ -75,6 +78,7 @@ Page({
   queryUsreInfo: function () {
     wx.request({
       url: app.globalData.urlPath + 'getuserInfo.php',
+      method: "POST",
       data: {
         openid: app.globalData.openid
       },

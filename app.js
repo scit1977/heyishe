@@ -3,16 +3,16 @@ App({
   onLaunch: function () {
     // 展示本地存储能力   
     var that=this; 
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    //var logs = wx.getStorageSync('logs') || []
+    //logs.unshift(Date.now())
+    //wx.setStorageSync('logs', logs)
     // 登录
    
     wx.login({
       success: res => {
         //code 用于获取openID的条件之一
         var code = res.code;
-        console.log('app.js code=' + code);
+       // console.log('app.js code=' + code);
         wx.request({
           url: that.globalData.urlPath+'/wxpay/wxgetopenid.php',
           //url: 'https://www.heyish.cn/wxshop/wxpay/wxgetopenid.php',
@@ -63,13 +63,13 @@ App({
             },
             complete: function () {
               // complete
-              console.log("获取用户信息完成！")
+             // console.log("获取用户信息完成！")
             }
           })
         }else
         {
           //弹出授权框
-          console.log('要求授权')
+         // console.log('要求授权')
          
           //wx.showLoading()
           

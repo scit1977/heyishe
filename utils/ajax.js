@@ -1,6 +1,5 @@
 const api = 'https://wx.heyishe.cn/wxshop/';
-//const api = 'https://www.heyish.cn/wxshop/';
-// common.js
+
 function request(opt) {
   // set token
   wx.request({
@@ -11,8 +10,8 @@ function request(opt) {
     },
     data: opt.data,
     success: function (res) {
-      console.log('res.data.code')
-      console.log(res.data.code)
+      //console.log('res.data.code')
+      //console.log(res.data.code)
       if (res.data.code == 100) {
         if (opt.success) {
           opt.success(res.data);
