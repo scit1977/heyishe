@@ -22,15 +22,21 @@
       </navigator>
     </view>
     <view class="item">
-      <navigator url="../address/address"  class="a">
-        <text class="icon address"></text>
-        <text class="txt">个人信息</text>
+      <navigator url="../mycharge/mycharge" class="a">
+        <text class="icon order"></text>
+        <text class="txt">我的充值</text>
       </navigator>
     </view>
      <view class="item">
       <navigator url="../consume/consume" class="a">
         <text class="icon order"></text>
         <text class="txt">我的消费</text>
+      </navigator>
+    </view>
+    <view class="item">
+      <navigator url="../address/address"  class="a">
+        <text class="icon address"></text>
+        <text class="txt">个人信息</text>
       </navigator>
     </view>
      <view class="item">

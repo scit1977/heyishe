@@ -1,0 +1,41 @@
+<!--pages/mycharge/mycharge.wxml-->
+<!--pages/myorder/myorder.wxml-->
+
+  
+  <view class="orders">
+         <view class="page-group">
+              <view class="page-group-position" style="opacity:1}}"></view>
+              <view bindtap="bindViewTap_sy" class="page-nav-list"><text>首页</text></view>
+              <view bindtap="bindViewTap_xm" class="page-nav-list"><text>项目</text></view>
+              <view bindtap="bindViewTap_cz" class="page-nav-list"><text>充值</text></view>
+              <view bindtap="bindViewTap_me" class="page-nav-list"><text>我的</text></view>
+        </view>
+        <view class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
+            <view class="h">
+                <view class="l">订单编号：{{item.id}}</view>
+                <view class="r">{{item.add_time}}</view>
+            </view>
+            <view class="goods" >
+                <view class="img">
+                    <image src="{{item.goods_img}}"></image>
+                </view>
+                <view class="info">
+                    <text class="name">{{item.goods_name}}</text>
+                     <text class="number">单价：{{item.goods_price}}</text>
+                    <text class="number">数量：{{item.goods_num}}</text>
+                </view>
+                <view class="status"></view>
+            </view>
+            <view class="b">
+                <view class="l">实付：￥{{item.goods_price_all}}</view>               
+            </view>
+        </view>
+  
+
+     <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+</view>
+
+

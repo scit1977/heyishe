@@ -10,6 +10,7 @@
     "pages/cart/cart",
     "pages/consume/consume",
     "pages/myorder/myorder",
+    "pages/mycharge/mycharge",
     "pages/personal/personal",
     "pages/authorize/authorize",
     "pages/charge/charge"    
