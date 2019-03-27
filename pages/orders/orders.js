@@ -7,7 +7,9 @@ Page({
     total: 0,
     orderId:'',
     orders: [     
-    ]
+    ],
+    url:''
+
   },
 
   onReady() {
@@ -15,6 +17,15 @@ Page({
   },
 
   onShow: function () {
+    var pages = getCurrentPages() //获取加载的页面
+
+    var currentPage = pages[pages.length - 2] //获取当前页面的对象
+
+    var url = currentPage.route //当前页面url
+    console.log(url)
+    this.setData({
+      url:url,
+    })
     var arr = wx.getStorageSync('orders') || [];
     console.info("orders.js 缓存数据：" + arr[0]['title']);
     // 有数据的话，就遍历数据，计算总金额 和 总数量  
@@ -117,9 +128,16 @@ Page({
                 wx.setStorageSync('cart', arr)
                 wx.setStorageSync('orders', arr)
                 //跳转到我的订单
-                wx.reLaunch({
-                  url: '/pages/myorder/myorder',
-                })
+                if (that.data.url =='pages/charge/charge'){
+                  wx.reLaunch({
+                    url: '/pages/mycharge/mycharge',
+                  })
+                }else{
+                  wx.reLaunch({
+                    url: '/pages/myorder/myorder',
+                  })
+                }
+              
               },
               fail: function (res) {
                 console.log(res);

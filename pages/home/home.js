@@ -23,7 +23,7 @@ Page({
   },
   loadnews: function () {
     //if (ifLoadMore) {
-    console.log('load loadnews')   
+    //console.log('load loadnews')   
     wx.showLoading({
       title: '加载中...'
     });
@@ -39,8 +39,8 @@ Page({
       success: function (res) {
         //从数据库获取用户信息     
         //判断是否为空
-       console.log(res)
-       console.log(res.data)
+       //console.log(res)
+       //console.log(res.data)
       // imgUrls = res.data.imgs
         //加载更多
         if (res.data.message=='OK') {
