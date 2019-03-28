@@ -6,4 +6,12 @@
 
 .page-body-button {
   margin-bottom: 10rpx;
+  width: 45%;
+  margin-left:20rpx;
+  float: left; 
+}
+.btn-area {
+  text-align: center;
+  width: 100%;
+  float: left; 
 }

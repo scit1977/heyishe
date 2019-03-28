@@ -1,12 +1,12 @@
 Page({
   data: {//28.167880,112.995960
     height:'',
-    latitude: 28.167880,
-    longitude: 112.995960,
+    latitude: 28.168294,
+    longitude: 112.996182,
     markers: [{
       id: 1,
-      latitude: 28.167880,
-      longitude: 112.995960,
+      latitude: 28.168294,
+      longitude: 112.996182,
       name: '长沙市雨花区劳动中路20号明星村12楼'
     }]
   },
@@ -35,6 +35,15 @@ Page({
   makecall:function(){
     wx.makePhoneCall({
       phoneNumber: '15974178746' //仅为示例，并非真实的电话号码
+    })
+  },
+  daohang: function (e) {
+    wx.openLocation({
+      latitude: 28.168294,
+      longitude: 112.996182,
+      scale: 18,
+      name: '和一舍',
+      address: '长沙市雨花区劳动中路20号明星村12楼'
     })
   },
   getCenterLocation: function () {

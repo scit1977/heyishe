@@ -11,7 +11,7 @@
     ></map>
   </view>
   <view class="btn-area">
-    <button bindtap="makecall" class="page-body-button" type="primary">咨询热线：15974178746</button>
-   
+    <button bindtap="makecall" class="page-body-button" type="primary">咨询热线</button>
+   <button bindtap="daohang" class="page-body-button" type="primary">导航前往</button>
   </view>
 </view>
