@@ -73,15 +73,22 @@
 }
 
 .user-menu .icon.order{
-    background: url(https://v.hnradio.com/wxshop/img/icon.png) 0 -437.5rpx no-repeat;
+    background: url(http://bg.heyishe.cn/img/icon.png) 0 -437.5rpx no-repeat;
+    background-size: 52.803rpx;
+}
+.user-menu .icon.charge{
+    background: url(http://bg.heyishe.cn/img/icon.png)0 -62.4997rpx no-repeat;
+    background-size: 52.803rpx;
+}
+.user-menu .icon.consume{
+    background: url(http://bg.heyishe.cn/img/icon.png)0 -500rpx no-repeat;
     background-size: 52.803rpx;
 }
 
 
 
-
 .user-menu .icon.address{
-    background: url(https://v.hnradio.com/wxshop/img/icon.png) 0 0 no-repeat;
+    background: url(http://bg.heyishe.cn/img/icon.png) 0 0 no-repeat;
     background-size: 52.803rpx;
 }
 
@@ -89,7 +96,7 @@
 
 
 .user-menu .icon.help{
-    background: url(https://v.hnradio.com/wxshop/img/icon.png) 0 -250rpx no-repeat;
+    background: url(http://bg.heyishe.cn/img/icon.png) 0 -250rpx no-repeat;
     background-size: 52.803rpx;
 }
 
