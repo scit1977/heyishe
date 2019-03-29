@@ -14,7 +14,7 @@ Page({
   
   onLoad: function () {
     //console.log(' Personal.js app.globalData.userInfo=' + app.globalData.userInfo)
-    this.data.uid = wx.getStorageSync('openid')
+    
 
     if (app.globalData.userInfo) {
       //1.1判断是否保存了全局用户信息，如果有就直接调取
@@ -22,6 +22,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+      this.data.uid = wx.getStorageSync('openid')
       this.get_data()
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
