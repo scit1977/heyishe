@@ -72,8 +72,8 @@ page{
 }
 
 .order .goods .img{
-    height:145.83rpx;
-    width:145.83rpx;
+    height:145rpx;
+    width:105rpx;
     background: #f4f4f4;
 }
 

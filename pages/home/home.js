@@ -11,7 +11,7 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    bannerHeight: Math.ceil(290.0 / 750.0 * getApp().screenWidth),
+    bannerHeight: 421.5,// Math.ceil(290.0 / 750.0 * getApp().screenWidth),
     jianjie_txt: ''
   },
 

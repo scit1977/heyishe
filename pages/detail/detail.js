@@ -78,7 +78,8 @@ Page({
         var imgs=data.imgs;
         console.log('goodsItem=')
         console.log(goodsItem)
-       
+        var WxParse = require('../../wxParse/wxParse.js');
+        WxParse.wxParse('content', 'html', goodsItem.p_detail, that, 25);
       
         //for (var i = 0; i < goodsItem.shopGoodsImageList.length; i++) {
          // imgUrls[i] = goodsItem.shopGoodsImageList[i].imgUrl;

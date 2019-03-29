@@ -1,14 +1,13 @@
 <!--pages/home/home.wxml-->
  <import src="../../wxParse/wxParse.wxml"/>
   
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:470rpx;">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
         <image src="{{item}}"  mode="aspectFill"  catchtap="show"/>
       </swiper-item>
     </block>
   </swiper>   
- <view class="contents">
-       <!--<text >{{details.jianjie}}</text>-->
+  <view class="contents">      
        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
-     </view> 
+  </view> 
