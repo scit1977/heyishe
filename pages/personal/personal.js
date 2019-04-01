@@ -10,12 +10,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   
   },
-  
-  
-  onLoad: function () {
-    //console.log(' Personal.js app.globalData.userInfo=' + app.globalData.userInfo)
-    
-
+ 
+  onShow:function(){
+    //console.log('p onShow')
     if (app.globalData.userInfo) {
       //1.1判断是否保存了全局用户信息，如果有就直接调取
       this.setData({
@@ -23,6 +20,8 @@ Page({
         hasUserInfo: true
       })
       this.data.uid = wx.getStorageSync('openid')
+      //读取后台数据，判断用户是否有地址信息
+    
       this.get_data()
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -31,6 +30,13 @@ Page({
         url: '/pages/authorize/authorize',
       })
     }
+  },
+  
+  onLoad: function () {
+    //console.log(' Personal.js app.globalData.userInfo=' + app.globalData.userInfo)
+   // console.log('p onload')
+
+    
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -58,10 +64,35 @@ Page({
       success: function (res) {  //后端返回的数据
         var data = res.data;
         // console.log(data.result);
-        self.setData({
-          balance: data.result.balance,
-          tname: data.result.name
-        })
+        if (data.result.name==''){
+        //没有名字信息，跳转到地址页面让用户填写信息
+          wx.showModal({
+            title: '提示',
+            content: '请先完善个人信息',
+            text: 'center',
+            complete() {
+              wx.navigateTo({
+                url: '/pages/address/address'
+              })
+            }
+          })
+        }else{
+          wx.setStorage({
+            key: 'address',
+            data: data.result,
+            success() {
+             // wx.navigateBack();
+              console.log('ok' + data.result)
+            }
+          })
+          self.setData({
+            balance: data.result.balance,
+            tname: data.result.name
+          })
+        }
+         
+      
+       
       },
       complete: function () {
         wx.hideLoading();

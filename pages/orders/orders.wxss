@@ -58,7 +58,7 @@
     position: absolute;
     top: 20rpx;
     left: 20rpx;
-    width: 180rpx;
+    width: 135rpx;
     height: 180rpx;
 }
 .orders-list view{

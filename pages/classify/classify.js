@@ -16,15 +16,22 @@ Page({
     col1: [],
     col2: []
   },
-
-  onLoad: function () {
+  onHide:function(){
+    page=1;
+    this.setData({     
+      images: null,
+       col1: [],
+      col2: []
+    });
+  },
+  onShow:function(){
     wx.getSystemInfo({
       success: (res) => {
         let ww = res.windowWidth;
         let wh = res.windowHeight;
         let imgWidth = ww * 0.48;
         let scrollH = wh;
-       // console.log('page=' + page)
+        // console.log('page=' + page)
         this.setData({
           scrollH: scrollH,
           imgWidth: imgWidth
@@ -34,6 +41,10 @@ Page({
         this.loadImages();
       }
     })
+  },
+  onLoad: function () {
+    //console.log('列表 .onload')
+   
   },
 
   onImageLoad: function (e) {
@@ -91,7 +102,7 @@ Page({
 
   loadImages: function () {
     //if (ifLoadMore) {
-   // console.log('load Images')
+   console.log('load Images')
     //console.log('page='+page)
     //调取商品信息
     let images=[];

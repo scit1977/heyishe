@@ -17,6 +17,7 @@ Page({
   },
 
   onShow: function () {
+    this.data.uid = wx.getStorageSync('openid')
     var pages = getCurrentPages() //获取加载的页面
 
     var currentPage = pages[pages.length - 2] //获取当前页面的对象
@@ -39,6 +40,17 @@ Page({
        console.log('结算数据为空')
     }
     const self = this;
+    //获取用户地址信息
+    this.get_address_data();
+    //console.log('this.data.address.name' + this.data.address.name)
+    //console.log('this.data.address.name.length' + this.data.address.name.length)
+    if ( this.data.address.name!=null){
+      console.log('姓名不等于空')
+      self.setData({
+        //address: res.data,
+        hasAddress: true
+      })
+    }
     wx.getStorage({
       key: 'address',
       success(res) {
@@ -49,7 +61,32 @@ Page({
       }
     })
   },
-
+  get_address_data() {
+    var self = this;
+    wx.showLoading({
+      title: '加载中...'
+    });
+    wx.request({
+      url: app.globalData.urlPath + 'getaddress.php',
+      method: "POST",
+      data: {
+        uid: this.data.uid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function (res) {  //后端返回的数据
+        var data = res.data;
+        // console.log(data.result);
+        self.setData({
+          address: data.result
+        })
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
+    });
+  },
   /**
    * 计算总价
    */
