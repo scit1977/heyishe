@@ -34,7 +34,7 @@ Page({
   },
   makecall:function(){
     wx.makePhoneCall({
-      phoneNumber: '15974178746' //仅为示例，并非真实的电话号码
+      phoneNumber: '13203154009' //仅为示例，并非真实的电话号码
     })
   },
   daohang: function (e) {

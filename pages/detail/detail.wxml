@@ -27,11 +27,11 @@
 
  <view class="details"> 
   <scroll-view scroll-y="true">
-    <text>详情</text>
+    <text class="product-name-wrap">详情</text>
     <block wx:for-items="{{imgs}}" wx:key="name">
        <image class="image_detail" src="{{item}}" mode="widthFix"/> 
     </block>
-     <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+     <template is="wxParse"  data="{{wxParseData:content.nodes}}"/>
      
     <view class="temp">
    
@@ -58,12 +58,12 @@
           <view class="column">
             <text class="sku-price">￥{{goods.totalMoney}}</text>
            <!-- <text class="sku-title">销量 {{goods.buyRate}} 件</text>-->
-            <text class="sku-title">商品编码：{{goods.goodsId}}</text>
+            <text class="sku-title">商品名称：{{goods.title}}</text>
           </view>
         </view>
         <text class="border-line"></text>
         <view class="row">
-          <text >购买数量</text>
+          <text style="margin-left:20rpx" >购买数量</text>
           <view class="quantity-position">
               <!-- <template is="quantity"  data="{{ ...item,index:index}}" />  -->
                <template is="quantity" data="{{ ...goods,index:1}}" /> 

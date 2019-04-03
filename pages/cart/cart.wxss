@@ -101,6 +101,8 @@ page{
   display: flex;
   flex-direction: row;
    align-items: center;
+    font-size: 14px;
+    color: #404040;
     /* margin-top: 40rpx;  */
   /* border: 1rpx solid #000000;  */
 }
@@ -139,10 +141,10 @@ page{
   width: 40rpx;
   height: 40rpx; 
   margin-left: 20rpx;
-   margin-top:25rpx;   
+   margin-top:-30rpx;   
 }
 .item-image {
-  width: 180rpx;
+  width: 132rpx;
   height: 180rpx;
   margin: 20rpx;
 }

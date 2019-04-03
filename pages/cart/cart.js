@@ -23,6 +23,9 @@ Page({
     var arr = wx.getStorageSync('cart') || [];
    // console.info("缓存数据：" + arr);
     var i=0;
+    this.setData({     
+      totalMoney: 0
+    });
     for (i = 0; i < arr.length; i++) {
       console.log(i)
       console.log(arr[i].imgUrl)
@@ -42,7 +45,7 @@ Page({
     } else {
       this.setData({
         iscart: false,
-        hidden: true,
+        hidden: true       
       });
     }
   },
