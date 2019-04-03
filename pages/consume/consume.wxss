@@ -1,8 +1,9 @@
-/* pages/consume/consume.wxss */
+/* pages/mycharge/mycharge.wxss */
+/* pages/myorder/myorder.wxss */
 page{
     height: 100%;
     width: 100%;
-    background: #333;
+    background: #f0145a;
     margin-top:40px;
 }
 .page-group{
@@ -73,13 +74,14 @@ page{
 
 .order .goods .img{
     height:145rpx;
-    width:105rpx;
+    width:145rpx;
+    text-align: center;
     background: #f4f4f4;
 }
 
 .order .goods .img image{
-    height:145.83rpx;
-    width:145.83rpx;
+    height:145rpx;
+    width:105rpx;
 }
 
 .order .goods .info{

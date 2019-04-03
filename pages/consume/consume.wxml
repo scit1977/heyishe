@@ -1,4 +1,3 @@
-<!--pages/consume/consume.wxml-->
 <!--pages/myorder/myorder.wxml-->
 
   
@@ -37,5 +36,4 @@
         <view class="weui-loadmore__tips">正在加载</view>
     </view>
 </view>
-
 

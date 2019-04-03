@@ -67,8 +67,8 @@ Page({
         if (data.result.name==''){
         //没有名字信息，跳转到地址页面让用户填写信息
           wx.showModal({
-            title: '提示',
-            content: '请先完善个人信息',
+            title: '温馨提示',
+            content: '亲，请先完善您的个人信息哦。',
             text: 'center',
             complete() {
               wx.navigateTo({

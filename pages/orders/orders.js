@@ -42,16 +42,8 @@ Page({
     const self = this;
     //获取用户地址信息
     this.get_address_data();
-    //console.log('this.data.address.name' + this.data.address.name)
-    //console.log('this.data.address.name.length' + this.data.address.name.length)
-    if ( this.data.address.name!=null){
-      console.log('姓名不等于空')
-      self.setData({
-        //address: res.data,
-        hasAddress: true
-      })
-    }
-    wx.getStorage({
+   
+   /* wx.getStorage({
       key: 'address',
       success(res) {
         self.setData({
@@ -59,7 +51,7 @@ Page({
           hasAddress: true
         })
       }
-    })
+    })*/
   },
   get_address_data() {
     var self = this;
@@ -81,6 +73,18 @@ Page({
         self.setData({
           address: data.result
         })
+        console.log('this.data.address.name' + self.data.address.name)
+        //console.log('this.data.address.name.length' + this.data.address.name.length)
+        if (self.data.address.name != null && self.data.address.name != '' && self.data.address.name != undefined) {
+          console.log('姓名不等于空')
+          //if (self.data.address.name.length > 1) {
+            self.setData({
+              //address: res.data,
+              hasAddress: true
+            })
+          //}
+
+        }
       },
       complete: function () {
         wx.hideLoading();
