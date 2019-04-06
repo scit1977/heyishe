@@ -1,35 +1,37 @@
-<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loadImages">
-  <view class="goods" style="width:100%">
-    <view class="img_item">
-      <view wx:for="{{col1}}"  wx:key="id">
-      <view class="item_info" catchtap="catchTap_item" data-goodsid="{{item.goodid}}">
-        <image src="{{item.imageurl}}" style="width:100%;"></image>
-      </view>
-            <view class="product-name">
-              {{item.name}}
-            </view>
-            <view class="product-price-wrap">
-              <p class="product-price-new">￥{{item.newprice}}</p>  
-              
-            </view>
-      </view>
-    </view>
-    <view class="img_item">
-      <view wx:for="{{col2}}"   wx:key="id">
-      <view class="item_info" catchtap="catchTap_item" data-goodsid="{{item.goodid}}">
-        <image src="{{item.imageurl}}" style="width:100%;"></image>
-      </view>
-            <view class="product-name">
-              {{item.name}}
-            </view>
-            <view class="product-price-wrap">
-              <p class="product-price-new">￥{{item.newprice}}</p>  
-                
-            </view>
-      </view>
-    </view>
+<!--主盒子-->
+<view class="container">
+  <!--左侧栏-->
+  <view class="nav_left">
+    <block wx:for="{{classifyItems}}">
+      <!--当前项的id等于item项的id，那个就是当前状态-->
+      <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
+      <!-- <view class="left_cate">
+        <view class="separate"></view>
+        <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">
+          {{item.cate_name}}
+        </view>
+      </view> -->
+
+      <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">
+          {{item.name}}
+        </view>
+    </block>
   </view>
-</scroll-view>
- <view style="display:none">
-  <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.imageurl}}" bindload="onImageLoad"></image>
-</view> 
+  <!--右侧栏-->
+  <view class="nav_right">
+    <!--如果有数据，才遍历项-->
+    <view wx:if="{{classifyItems[curIndex].ishaveChild}}">
+      <block wx:for="{{classifyItems[curIndex].shopClassifyDtoList}}">
+        <view class="nav_right_items">
+        <!--界面跳转 -->
+          <navigator url="/pages/detail/detail?goodsId={{item.goodid}}">
+            <image src="{{item.imageurl}}"></image>
+            <text>{{item.name}}</text>
+          </navigator>
+        </view>
+      </block>
+    </view>
+    <!--如果无数据，则显示数据-->
+    <view class="nodata_text" wx:else>该分类暂无数据</view>
+  </view>
+</view>
