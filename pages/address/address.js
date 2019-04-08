@@ -77,7 +77,8 @@ Page({
    //发送验证码
     var phoneNum = this.data.phoneNum;
     var self=this
-   // var sessionId = wx.getStorageSync('sessionId');
+    var sessionId = wx.getStorageSync('sessionId');
+    console.log('sessionId=' + sessionId)
     wx.request({
       url: app.globalData.urlPath + 'sendsms.php',
       method: "POST",
@@ -85,16 +86,29 @@ Page({
         phoneNum: phoneNum
       },
       header: {
-        "Content-Type": "application/x-www-form-urlencoded"       
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": sessionId       
       },     
       success: function (res) {
         var data = res.data; 
         console.log(res)
-        console.log(data.code)
-        self.setData({
-          backcode:data.code
-         
-        })
+        console.log(data.message)
+        //判断验证码发送状态
+        if ((data.message === 'OK') && (data.result === 'OK')) {
+          wx.showToast({
+            title: '验证码发送成功',
+            icon: 'success'
+          })
+          
+        } else {
+          wx.showToast({
+            title: data.message,
+            icon: 'warn',
+            image: '../../images/fail.png',
+            duration: 2000
+          })
+        }
+       
       }
     })
     this.setData({
@@ -204,9 +218,9 @@ Page({
         self.setData({
           address: data.result.address,
           phoneNum: data.result.tel,
-          name: data.result.name,
-
+          name: data.result.name,          
         })
+        wx.setStorageSync('sessionId', res.header['Set-Cookie'])
         console.log('address=' + self.data.address)
          if(data.result.tel.length==11){
            self.showSendMsg()
@@ -228,6 +242,7 @@ Page({
     wx.showLoading({
       title: '请稍后...'
     });
+    var sessionId = wx.getStorageSync('sessionId');
     wx.request({
       url: app.globalData.urlPath +'editaddress.php',
       //url: 'https://www.heyish.cn/wxshop/wxpay/wxpayindex.php',
@@ -236,13 +251,36 @@ Page({
         name: value.name,
         tel: value.tel,
         address: value.address,
+        code:value.code,
         uid:this.data.uid,
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        "Cookie": sessionId 
       },
       success: function (res) {  //后端返回的数据
         var data = res.data;
+        if (data.message ==='ok') {
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success'
+          })
+          wx.setStorage({
+            key: 'address',
+            data: value,
+            success() {
+              wx.navigateBack();
+            }
+          })
+        } else {
+            wx.showToast({
+            title: data.result,
+            icon: 'warn',
+            image: '../../images/fail.png',
+            duration: 2000
+          })
+        }
+        
         console.log(data);       
       },
       complete: function () {
@@ -262,23 +300,11 @@ Page({
       return false
     }
     console.log('value.code=' + value.code)
-    console.log('this.data.backcode=' + this.data.backcode)
-    if (!(value.code==this.data.backcode)){
-      wx.showModal({
-        title: '错误',
-        content: '验证码错误！'
-      });
-      return false
-    }
-    if (value.name && value.tel && value.address) {
+    //console.log('this.data.backcode=' + this.data.backcode)
+   
+    if (value.name && value.tel && value.address&&value.code) {
       this.input_data(value)
-      wx.setStorage({
-        key: 'address',
-        data: value,
-        success() {
-         wx.navigateBack();
-        }
-      })
+     
     } else {
       wx.showModal({
         title: '提示',
