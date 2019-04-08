@@ -1,1 +1,17 @@
 /* pages/address/address.wxss */
+@import '../../utils/weui.wxss';
+.myform{
+  font-size: 34rpx;
+   display: inline-block;
+  
+}
+.label{
+  font-size: 34rpx;
+  padding-right: 20rpx;
+  padding-top:30rpx; 
+  padding-bottom:30rpx;     
+}
+.title{
+  font-size: 48rpx;
+  text-align: center;
+}

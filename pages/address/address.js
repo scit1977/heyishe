@@ -1,30 +1,31 @@
 // page/component/new-pages/user/address/address.js
-var zhenzisms = require('../../utils/zhenzisms.js');
 const app = getApp();
 Page({
   data: {
     uid: '',
-    address: {
-      name: '',
-      tel: '',
-      address: '',
-      send: false,
-      alreadySend: false,
-      second: 60,
-      disabled: true,      
-      code: '',
-     
-    }
+    send: false,
+    alreadySend: false,
+    second: 60,
+    disabled: true,
+    code: '',
+    backcode:'',
+    phoneNum:'',
+    name:'',
+    address:'',
+    buttonType: 'default',
+   
   },
 
-  // 手机号部分
+  
   inputPhoneNum: function (e) {
+    // 手机号码输入
+    console.log('inputPhoneNum 函数')
     let phoneNum = e.detail.value
     if (phoneNum.length === 11) {
       let checkedNum = this.checkPhoneNum(phoneNum)
       if (checkedNum) {
         this.setData({
-          tel: phoneNum
+          phoneNum: phoneNum
         })
         console.log('phoneNum' + this.data.phoneNum)
         this.showSendMsg()
@@ -39,18 +40,23 @@ Page({
   },
 
   checkPhoneNum: function (phoneNum) {
-    let str = /^1\d{10}$/
+     //检查手机格式是否正确
+    let str = /^1[3-9][0-9]\d{8}$/  // if (!value.tel.match(/^1[3-9][0-9]\d{8}$/)) {
     if (str.test(phoneNum)) {
       return true
     } else {
       wx.showToast({
         title: '手机号不正确',
-        image: '../../images/fail.png'
+        icon: 'warn',
+        image: '../../images/fail.png',
+        duration: 2000
       })
       return false
     }
   },
   showSendMsg: function () {
+    console.log('showSendMsg 函数')
+    //显示发送按钮
     if (!this.data.alreadySend) {
       this.setData({
         send: true
@@ -59,28 +65,36 @@ Page({
   },
 
   hideSendMsg: function () {
+    //隐藏发送按钮
     this.setData({
       send: false,
       disabled: true,
       buttonType: 'default'
     })
   },
-  //发送验证码
+ 
   sendMsg: function () {
-    /*var phoneNum = this.data.phoneNum;
-    var sessionId = wx.getStorageSync('sessionId');
+   //发送验证码
+    var phoneNum = this.data.phoneNum;
+    var self=this
+   // var sessionId = wx.getStorageSync('sessionId');
     wx.request({
-      url: `${config.api + '/sendSms.html'}`,
+      url: app.globalData.urlPath + 'sendsms.php',
+      method: "POST",
       data: {
         phoneNum: phoneNum
       },
       header: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Cookie": sessionId
-      },
-      method: 'POST',
+        "Content-Type": "application/x-www-form-urlencoded"       
+      },     
       success: function (res) {
+        var data = res.data; 
         console.log(res)
+        console.log(data.code)
+        self.setData({
+          backcode:data.code
+         
+        })
       }
     })
     this.setData({
@@ -88,22 +102,8 @@ Page({
       send: false
     })
     this.timer()
-    */
-    console.log('获取验证码');
-    var phoneNum = this.data.tel;
-    var that = this;
-    zhenzisms.client.init('https://smsdeveloper.zhenzikj.com', '101195', '651cbd92-6039-4607-8a55-5fd79c3c3dc4');
-    zhenzisms.client.send(function (res) {
-      if (res.data.code == 0) {
-        that.timer();
-        return;
-      }
-      wx.showToast({
-        title: res.data.data,
-        icon: 'none',
-        duration: 2000
-      })
-    }, phoneNum, '[和一舍]的验证码为:3322');
+   
+   
   },
 
   timer: function () {
@@ -129,29 +129,40 @@ Page({
     })
   },
 
-  // 其他信息部分
-  addOtherInfo: function (e) {
+  
+  addnameInfo: function (e) {
+    // 其他 地址信息部分
     this.setData({
-      otherInfo: e.detail.value
+      name: e.detail.value
     })
     this.activeButton()
-    console.log('otherInfo: ' + this.data.otherInfo)
+    console.log('nameInfo: ' + this.data.otherInfo)
+  },
+  addaddressInfo: function (e) {
+    // 其他 地址信息部分
+    this.setData({
+      address: e.detail.value
+    })
+    this.activeButton()
+    console.log('addressInfo: ' + this.data.otherInfo)
   },
 
   // 验证码
   addCode: function (e) {
+    console.log('addCode 函数')
     this.setData({
       code: e.detail.value
     })
     this.activeButton()
-    console.log('code' + this.data.code)
+    console.log('code=' + this.data.code)
   },
 
   // 按钮
   activeButton: function () {
-    let { phoneNum, code, otherInfo } = this.data
-    console.log(code)
-    if (phoneNum && code && otherInfo) {
+    console.log('activeButton 函数')
+    let { phoneNum, code, name,address } = this.data
+    console.log('code=='+code)
+    if (phoneNum && code && name && address) {
       this.setData({
         disabled: false,
         buttonType: 'primary'
@@ -172,6 +183,7 @@ Page({
   
   },
   get_data(){
+    //获取原有数据
     var self=this;
     wx.showLoading({
       title: '加载中...'
@@ -187,20 +199,29 @@ Page({
       },
       success: function (res) {  //后端返回的数据
         var data = res.data;       
-       // console.log(data.result);
-         if(data.result.tel.length==11){
-           self.setData({
-             send: true
-           })
-         }
+        console.log(data.result);
+        console.log(data.result.tel);
         self.setData({
-          address: data.result
+          address: data.result.address,
+          phoneNum: data.result.tel,
+          name: data.result.name,
+
         })
+        console.log('address=' + self.data.address)
+         if(data.result.tel.length==11){
+           self.showSendMsg()
+           //self.hideSendMsg()
+           //self.setData({
+            // send: true
+          // })
+         }
+       
       },
       complete: function () {
         wx.hideLoading();
       }
     });
+   
   },
   input_data(value){
     //console.log(value)
@@ -230,12 +251,22 @@ Page({
     });
   },
   formSubmit(e) {
+    console.log('formSubmit 函数')
     console.log(e.detail.value)
     const value = e.detail.value;
     if (!value.tel.match(/^1[3-9][0-9]\d{8}$/)) {
       wx.showModal({
         title: '错误',
         content: '手机号格式不正确，仅支持国内手机号码'
+      });
+      return false
+    }
+    console.log('value.code=' + value.code)
+    console.log('this.data.backcode=' + this.data.backcode)
+    if (!(value.code==this.data.backcode)){
+      wx.showModal({
+        title: '错误',
+        content: '验证码错误！'
       });
       return false
     }
