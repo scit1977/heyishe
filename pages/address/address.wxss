@@ -12,6 +12,11 @@
   padding-bottom:30rpx;     
 }
 .title{
-  font-size: 48rpx;
+  font-size: 40rpx;
+  font-weight: bold;
   text-align: center;
+  padding-bottom: 30rpx; 
+}
+.sendMsg{
+font-size: 30rpx;
 }

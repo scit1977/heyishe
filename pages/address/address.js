@@ -13,13 +13,14 @@ Page({
     name:'',
     address:'',
     buttonType: 'default',
+    wmessage:''
    
   },
 
   
   inputPhoneNum: function (e) {
     // 手机号码输入
-    console.log('inputPhoneNum 函数')
+   // console.log('inputPhoneNum 函数')
     let phoneNum = e.detail.value
     if (phoneNum.length === 11) {
       let checkedNum = this.checkPhoneNum(phoneNum)
@@ -27,7 +28,7 @@ Page({
         this.setData({
           phoneNum: phoneNum
         })
-        console.log('phoneNum' + this.data.phoneNum)
+      //  console.log('phoneNum' + this.data.phoneNum)
         this.showSendMsg()
         this.activeButton()
       }
@@ -45,17 +46,21 @@ Page({
     if (str.test(phoneNum)) {
       return true
     } else {
-      wx.showToast({
-        title: '手机号不正确',
-        icon: 'warn',
-        image: '../../images/fail.png',
-        duration: 2000
+      wx.showModal({
+        title: '错误',
+        content: '手机号格式不正确，仅支持国内手机号码',
+        showCancel: false
+      });
+       this.setData({
+        wmessage: '手机号码不正确！'
       })
+      this.popup.showPopup();
+     
       return false
     }
   },
   showSendMsg: function () {
-    console.log('showSendMsg 函数')
+   // console.log('showSendMsg 函数')
     //显示发送按钮
     if (!this.data.alreadySend) {
       this.setData({
@@ -78,7 +83,7 @@ Page({
     var phoneNum = this.data.phoneNum;
     var self=this
     var sessionId = wx.getStorageSync('sessionId');
-    console.log('sessionId=' + sessionId)
+    //console.log('sessionId=' + sessionId)
     wx.request({
       url: app.globalData.urlPath + 'sendsms.php',
       method: "POST",
@@ -101,12 +106,18 @@ Page({
           })
           
         } else {
-          wx.showToast({
+          wx.showModal({
+            title: '出错啦',
+            content: '验证码发送失败，请重试！',
+            showCancel: false
+          });
+        
+         /* wx.showToast({
             title: data.message,
             icon: 'warn',
             image: '../../images/fail.png',
             duration: 2000
-          })
+          })*/
         }
        
       }
@@ -150,7 +161,7 @@ Page({
       name: e.detail.value
     })
     this.activeButton()
-    console.log('nameInfo: ' + this.data.otherInfo)
+   // console.log('nameInfo: ' + this.data.otherInfo)
   },
   addaddressInfo: function (e) {
     // 其他 地址信息部分
@@ -158,24 +169,24 @@ Page({
       address: e.detail.value
     })
     this.activeButton()
-    console.log('addressInfo: ' + this.data.otherInfo)
+   // console.log('addressInfo: ' + this.data.otherInfo)
   },
 
   // 验证码
   addCode: function (e) {
-    console.log('addCode 函数')
+   // console.log('addCode 函数')
     this.setData({
       code: e.detail.value
     })
     this.activeButton()
-    console.log('code=' + this.data.code)
+    //console.log('code=' + this.data.code)
   },
 
   // 按钮
   activeButton: function () {
-    console.log('activeButton 函数')
+   // console.log('activeButton 函数')
     let { phoneNum, code, name,address } = this.data
-    console.log('code=='+code)
+   // console.log('code=='+code)
     if (phoneNum && code && name && address) {
       this.setData({
         disabled: false,
@@ -187,9 +198,7 @@ Page({
         buttonType: 'default'
       })
     }
-  },
-
-
+  }, 
   onLoad() {
     this.data.uid = wx.getStorageSync('openid')
     //console.log('this.uid=' + this.data.uid)   
@@ -273,15 +282,21 @@ Page({
             }
           })
         } else {
-            wx.showToast({
+          wx.showModal({
+            title: '出错啦',
+            content: data.result,
+            showCancel: false
+          });
+         
+           /* wx.showToast({
             title: data.result,
             icon: 'warn',
             image: '../../images/fail.png',
             duration: 2000
-          })
+          })*/
         }
         
-        console.log(data);       
+       // console.log(data);       
       },
       complete: function () {
         wx.hideLoading();
@@ -293,9 +308,11 @@ Page({
     console.log(e.detail.value)
     const value = e.detail.value;
     if (!value.tel.match(/^1[3-9][0-9]\d{8}$/)) {
+      
       wx.showModal({
-        title: '错误',
-        content: '手机号格式不正确，仅支持国内手机号码'
+        title: '提示',
+        content: '手机号格式不正确，仅支持11位国内手机号码',
+        showCancel: false
       });
       return false
     }

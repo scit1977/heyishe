@@ -21,7 +21,7 @@
               </view>
               <view class="weui-cell__bd"><input placeholder="短信验证码" type="number" bindinput="addCode" name='code' value='{{code}}'/></view>
                <text wx:if="{{send}}" class="sendMsg" bindtap="sendMsg">获取验证码</text>
-                <text wx:if="{{alreadySend}}" class="sendMsg" bindtap="sendMsg">{{second+"s"}}</text>
+                <text wx:if="{{alreadySend}}" class="sendMsg" bindtap="sendMsg">{{second+"秒后获取"}}</text>
           </view> 
           <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
@@ -45,4 +45,6 @@
      </view> 
         
         </form>
+      
+
 </view>
