@@ -3,7 +3,7 @@
 page{
     height: 100%;
     width: 100%;
-    background: #f0145a;
+    background: #802b1f;
     margin-top:40px;
 }
 .page-group{

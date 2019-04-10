@@ -36,7 +36,7 @@ page{
 .nav_left .nav_left_items.active{  
   /*背景色变成白色*/  
   background: #fff;  
-  color: #f0145a; 
+  color: #f44336;
 }  
 /*右侧栏主盒子*/  
 .nav_right{  
@@ -58,19 +58,19 @@ page{
   float: left;  
   /*每个item设置宽度是50%*/  
   width: 50%;  
-  height: 160px;  
+  height: 175px;  
   text-align: center;  
 }  
 .nav_right .nav_right_items image{  
   /*被图片设置宽高*/  
-  width: 90px;  
+  width: 100px;  
   height: 120px;  
-  margin-top: 10px;  
+  margin-top: 5px;  
 }  
 .nav_right .nav_right_items text{  
   /*给text设成块级元素*/  
   display: block;  
-  margin-top: 5px;  
+  margin-top: 3px;  
   font-size: 12px;  
   color: black;
   /*设置文字溢出部分为...  
@@ -104,10 +104,10 @@ page{
   font-size: 14px; 
 
   background: #fff;  
-  color: #f0145a; 
+  color: #f44336; 
 }
  .separate {
-  background-color: #f0145a;
+  background-color: #f44336;
   width: 10rpx;
   z-index: 10;
 } 
