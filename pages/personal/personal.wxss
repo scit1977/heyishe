@@ -30,6 +30,7 @@
 .balance{
   height: 40px;
   padding: 5px;
+  font-size: 14px;
 }
 .user-menu{
     width: 100%;

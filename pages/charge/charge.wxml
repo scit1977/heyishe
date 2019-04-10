@@ -1,7 +1,7 @@
 <!--pages/charge/charge.wxml-->
-<view class="cpage">
-    <view class="top">
-      <image src="{{imgsrc}}"  mode="widthFix"  />
+<view class="page">
+    <view >
+      <image class="img" src="{{imgsrc}}"  mode="widthFix" width="750rpx" />
     </view>
     <view class='radios'>
         <radio-group class="radio-group" bindchange="radioChange">
@@ -13,7 +13,7 @@
         </view>
     </radio-group>
     </view>
-    <view class="">
+    <view class="bottom">
 
         <button class="page-body-button" type="primary" bindtap='immeBuy'>立刻充值
 

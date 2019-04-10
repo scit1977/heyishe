@@ -3,17 +3,23 @@ page{
   display: flex;  
   flex-direction: column;  
   height: 100%;
-  padding: 0;  
+  padding: 0;
+  font-size: 14px;  
 }  
+.img{ 
+ width: 100%; 
+}
 .top{
   display: flex;
   justify-content: center;  
   text-align: center;
+  width: 100%;
 
 }
 .radios{
   display: flex;
    width: 100%;
+   padding-left: 20rpx; 
 }
 .radio-group{
  display: flex;
@@ -32,9 +38,15 @@ page{
   /*transform:scale(0.8);*/
   line-height: 36px;
 }
-
+.bottom{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 100%;
+}
 .page-body-button {
-  width:100%; 
+  width:80%; 
   position:fixed; 
-  bottom:5px; 
+  bottom:5px;
+  
 }
