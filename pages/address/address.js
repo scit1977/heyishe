@@ -51,10 +51,7 @@ Page({
         content: '手机号格式不正确，仅支持国内手机号码',
         showCancel: false
       });
-       this.setData({
-        wmessage: '手机号码不正确！'
-      })
-      this.popup.showPopup();
+      
      
       return false
     }

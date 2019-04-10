@@ -3,6 +3,7 @@
 .myform{
   font-size: 34rpx;
    display: inline-block;
+   width: 100%;
   
 }
 .label{
