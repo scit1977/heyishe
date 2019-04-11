@@ -1,0 +1,15 @@
+<!--pages/tel/tel.wxml-->
+  <swiper indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:470rpx;">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}"  mode="aspectFill"  catchtap="show"/>
+      </swiper-item>
+    </block>
+  </swiper>   
+  <view class="contents">      
+       咨询电话:杨丽博士13203154009
+  </view> 
+   <view class="btn-area">
+    <button bindtap="makecall" class="page-body-button" type="primary">立即咨询</button>
+  
+  </view>

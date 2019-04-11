@@ -1,0 +1,39 @@
+/* pages/tel/tel.wxss */
+page{  
+  display: flex;  
+  flex-direction: column;  
+  height: 100%;  
+}  
+.navbar{  
+  flex: flex;  
+  height: 200rpx;
+  display: flex;  
+  background: #fff;  
+} 
+/* 直接设置swiper属性 */
+
+swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+.contents{
+  
+  width: 96%;  
+  justify-content: center;
+  font-size: 12pt;
+  color: #353535;
+  padding: 30rpx;
+}
+.page-body-button {
+  margin-bottom: 20rpx;
+  width: 80%;
+  
+  
+}
+.btn-area {
+  position: fixed;
+  bottom:0px;
+  text-align: center;
+  width: 100%;
+  
+}

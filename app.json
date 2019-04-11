@@ -13,13 +13,15 @@
     "pages/mycharge/mycharge",
     "pages/personal/personal",
     "pages/authorize/authorize",
-    "pages/charge/charge"    
+    "pages/charge/charge",
+    "pages/tel/tel"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#802b1f",
     "navigationBarTitleText": "和一舍",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
+    
   },
   "tabBar": {
     "color": "#858585",

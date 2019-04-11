@@ -40,7 +40,7 @@
       </navigator>
     </view>
      <view class="item">
-     <navigator url="/pages/help/help" class="a">
+     <navigator url="/pages/tel/tel" class="a">
         <text class="icon help"></text>
         <text class="txt">电话咨询</text>
       </navigator>
