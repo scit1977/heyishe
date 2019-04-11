@@ -1,5 +1,5 @@
 /* pages/address/address.wxss */
-@import '../../utils/weui.wxss';
+
 .myform{
   font-size: 34rpx;
    display: inline-block;
@@ -10,7 +10,13 @@
   font-size: 34rpx;
   padding-right: 20rpx;
   padding-top:30rpx; 
-  padding-bottom:30rpx;     
+  padding-bottom:30rpx; 
+ 
+   
+}
+.winput{
+  width: 100%;
+  
 }
 .title{
   font-size: 40rpx;
@@ -20,4 +26,88 @@
 }
 .sendMsg{
 font-size: 30rpx;
+}
+page {
+  height: 100%;
+ 
+}
+#couponDetail{
+  height: 100%;
+}
+#couponDetail .coupon-wrap{
+  width: 90%;
+  background: rgb(255,255,255);
+  margin: 40px auto;
+  border-radius: 5px;
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+#couponDetail .coupon-wrap .logo{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 1px solid #dcdcdc;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -31px;
+}
+#couponDetail .coupon-wrap .name{
+  text-align: center;
+  color: #777;
+}
+#couponDetail .coupon-wrap .title {
+  text-align: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+#couponDetail .coupon-wrap .sub-title {
+  text-align: center;
+  font-weight: normal;
+  font-size: 18px;
+  color: #777;
+}
+#couponDetail .coupon-wrap .condition {
+  padding: 0 0 10px 10px;
+  margin-top: 30px;
+}
+#couponDetail .coupon-wrap .time {
+  padding: 0 0 10px 10px;
+  margin-left: 80px;
+}
+#couponDetail .coupon-wrap .exclude {
+  padding: 0 0 10px 10px;
+  margin-left: 80px;
+}
+#couponDetail .coupon-wrap .date{
+  padding: 0 0 10px 10px;
+}
+#couponDetail .coupon-wrap .contact-wrap{
+  padding: 10px;
+  border-top: 1px dashed #a3a3a3;
+}
+#couponDetail .coupon-wrap .address{
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dcdcdc;
+  flex-direction: row;
+  display: flex;
+  font-size: 14px;
+}
+
+
+#couponDetail .coupon-wrap .phone{
+  padding-top: 10px;
+}
+#couponDetail .receive-btn{
+  height: 45px;
+  width: 60%;
+  background:rgb(129,31,1);
+  border-radius: 10px;
+  text-align: center;
+  line-height: 45px;
+  font-size: 18px;
+  color: #fff;
+  margin: 0 auto 30px;
 }

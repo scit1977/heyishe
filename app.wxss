@@ -1,4 +1,14 @@
 /**app.wxss**/
+html, body {
+	width: 100%;
+	background-repeat: repeat;
+  overflow-x: hidden;
+}
+.page {
+	width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 .container {
   height: 100%;
   display: flex;

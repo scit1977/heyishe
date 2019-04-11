@@ -13,7 +13,21 @@ Page({
     name:'',
     address:'',
     buttonType: 'default',
-    wmessage:''
+    wmessage:'',
+    couponDetail: {
+      logoUrl: 'https://wx.heyishe.cn/img/log100.jpg',
+      appName: '和一舍',
+      title: '个人信息',
+      subTitle: '',
+      useCondition: 'useCondition',
+      useData: 'useData',
+      useTime: '',
+      excludeHoliday: '',
+      excludeWeekend: '',
+      address: 'address',
+      phone: 'phone',
+      background: ''
+    }
    
   },
 
