@@ -76,7 +76,7 @@ Page({
         console.log('this.data.address.name' + self.data.address.name)
         //console.log('this.data.address.name.length' + this.data.address.name.length)
         if (self.data.address.name != null && self.data.address.name != '' && self.data.address.name != undefined) {
-          console.log('姓名不等于空')
+          //console.log('姓名不等于空')
           //if (self.data.address.name.length > 1) {
             self.setData({
               //address: res.data,

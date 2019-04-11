@@ -42,10 +42,15 @@
      <view class="item">
      <navigator url="/pages/help/help" class="a">
         <text class="icon help"></text>
-        <text class="txt">联系我们</text>
+        <text class="txt">电话咨询</text>
       </navigator>
     </view>
-    
+      <view class="item">
+     <navigator url="/pages/help/help" class="a">
+        <text class="icon daohang"></text>
+        <text class="txt">地图导航</text>
+      </navigator>
+    </view>
 </view>
      
 <view class="separate"></view>

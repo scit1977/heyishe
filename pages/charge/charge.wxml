@@ -1,7 +1,7 @@
 <!--pages/charge/charge.wxml-->
 <view class="page">
     <view >
-      <image class="img" src="{{imgsrc}}"  mode="widthFix" width="750rpx" />
+      <image class="img" src="https://wx.heyishe.cn/img/charge.jpg"  mode="widthFix" width="750rpx" />
     </view>
     <view class='radios'>
         <radio-group class="radio-group" bindchange="radioChange">

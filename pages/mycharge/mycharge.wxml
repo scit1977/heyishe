@@ -23,6 +23,7 @@
                     <text class="name">{{item.goods_name}}</text>
                      <text class="number">单价：{{item.goods_price}}</text>
                     <text class="number">数量：{{item.goods_num}}</text>
+                     <text class="number">到账：{{item.goods_account}}</text>
                 </view>
                 <view class="status"></view>
             </view>
