@@ -14,14 +14,14 @@
     "pages/personal/personal",
     "pages/authorize/authorize",
     "pages/charge/charge",
-    "pages/tel/tel"
+    "pages/tel/tel",    
+    "pages/card/card"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#802b1f",
     "navigationBarTitleText": "和一舍",
     "navigationBarTextStyle": "white"
-    
   },
   "tabBar": {
     "color": "#858585",

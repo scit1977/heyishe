@@ -78,6 +78,14 @@ Page({
     });
     
   },
+  tofree() {
+    // console.log('radio发生change事件，携带value值为：', e.detail.value)
+    //console.log(e.detail)
+    wx.navigateTo({
+      url: '../card/card'
+    });
+
+  },
   // 立即购买
   immeBuy() {
     var goods;

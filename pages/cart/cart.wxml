@@ -7,7 +7,7 @@
         <p></p>
        
          <a href="#" bindtap="handle_goodlist" class="button button-primary" >
-            去抢购
+            去选择项目
         </a>
         
     </view>
