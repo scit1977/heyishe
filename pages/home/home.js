@@ -45,7 +45,7 @@ Page({
         //加载更多
         if (res.data.message=='OK') {
           
-
+          console.log(res.data)
           that.setData({
             // loadingCount: orderList.length,
             imgUrls: res.data.imgs,
