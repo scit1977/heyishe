@@ -76,7 +76,9 @@ Page({
   
     console.log('加载更多')
     if (!this.data.nomore) {
+      wx.showNavigationBarLoading() //在标题栏中显示加载
       this.loadmyorders()
+      wx.hideNavigationBarLoading() //完成停止加载
     }
   },
   loadmyorders: function () {

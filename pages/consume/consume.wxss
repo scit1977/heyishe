@@ -1,5 +1,4 @@
 /* pages/mycharge/mycharge.wxss */
-/* pages/myorder/myorder.wxss */
 page{
     height: 100%;
     width: 100%;
@@ -21,27 +20,28 @@ page{
   position: absolute;
   top: 0;
   left: 0;
-  background-color:#b4282d;
+  background-color:#802b1f;
   opacity: 0;
   z-index: -1;
 }
 .page-nav-list{
-  padding:30rpx 0 ;
+  padding:20rpx 0 ;
   display: table-cell;
   text-align: center;
   width: 100%;
   color: #fff;
+  font-size: 32rpx;
 }
 
 .orders{
     height: auto;
     width: 100%;
-    overflow: hidden;
-    margin-top:30px;
+    overflow: hidden;  
+    padding-top:20rpx;  
 }
 
 .order{
-    margin-top: 20rpx;
+    margin-top: 5rpx;
     background: #fff;
 }
 
@@ -91,10 +91,10 @@ page{
 }
 
 .order .goods .name{
-    margin-top: 30rpx;
+    margin-top: 8rpx;
     display: block;
-    height: 44rpx;
-    line-height: 44rpx;
+    height: 40rpx;
+    line-height: 40rpx;
     color: #333;
     font-size: 30rpx;
 }
@@ -104,7 +104,7 @@ page{
     height: 37rpx;
     line-height: 37rpx;
     color: #666;
-    font-size: 25rpx;
+    font-size: 26rpx;
 }
 
 .order .goods .status{

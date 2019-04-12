@@ -73,11 +73,15 @@ Page({
   /**       * 页面上拉触底事件的处理函数       */
   onReachBottom: function () {
 
-
+    
     console.log('加载更多')
     if (!this.data.nomore) {
+      wx.showNavigationBarLoading() //在标题栏中显示加载
       this.loadmyorders()
+      wx.hideNavigationBarLoading() //完成停止加载
+     // wx.stopPullDownRefresh() //停止下拉刷新
     }
+   
   },
   loadmyorders: function () {
     //if (ifLoadMore) {

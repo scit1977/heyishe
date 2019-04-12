@@ -30,7 +30,7 @@
      <view class="item">
       <navigator url="../consume/consume" class="a">
         <text class="icon consume"></text>
-        <text class="txt">我的消费</text>
+        <text class="txt">账户消费</text>
       </navigator>
     </view>
     <view class="item">

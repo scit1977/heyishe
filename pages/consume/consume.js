@@ -32,7 +32,7 @@ Page({
     // 页面显示
     var that = this
     this.data.uid = wx.getStorageSync('openid')
-    console.log('第一次 页面 isHideLoadMore=' + this.data.isHideLoadMore)
+    //  console.log('第一次 页面 isHideLoadMore=' + this.data.isHideLoadMore)
     // 这里要注意，微信的scroll-view必须要设置高度才能监听滚动事件，所以，需要在页面的onLoad事件中给scroll-view的高度赋值
     //原文：https://blog.csdn.net/qq_35695041/article/details/80236489 
     wx.getSystemInfo({
@@ -76,7 +76,10 @@ Page({
 
     console.log('加载更多')
     if (!this.data.nomore) {
+      wx.showNavigationBarLoading() //在标题栏中显示加载
       this.loadmyorders()
+      wx.hideNavigationBarLoading() //完成停止加载
+      
     }
   },
   loadmyorders: function () {

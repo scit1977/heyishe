@@ -1,41 +1,43 @@
 <!--pages/address/address.wxml-->
- <form bindsubmit="formSubmit" class='myform'>
-<view class="page"  id="couponDetail" style="background:rgb(248,239,228)">
-  <view class="coupon-wrap">
-    <image src="{{ couponDetail.logoUrl }}" alt="logo" class="logo"></image>
-    <view class="name">{{ couponDetail.appName }}</view>
-    <view class="title">{{ couponDetail.title }}</view>
-   
-    <view class="contact-wrap">
-      <view class="address">
-            
-                    <view >手机号码: </view>               
-                    <view > <input class="winput" name="tel" placeholder="请输入手机号码" type="number" maxlength="11" bindinput="inputPhoneNum" auto-focus value='{{phoneNum}}'/> </view>               
-      </view>
-      <view class="address">
-                 <view >短信验证: </view>
-             
-              <view ><input class="winput" placeholder="短信验证码" type="number" bindinput="addCode" name='code' value='{{code}}'/></view>
-               <text wx:if="{{send}}" class="sendMsg" bindtap="sendMsg">获取验证码</text>
-                <text wx:if="{{alreadySend}}" class="sendMsg" bindtap="sendMsg">{{second+"秒后获取"}}</text></view>
+<form bindsubmit="formSubmit" class='myform'>
+    <view class="page"  id="couponDetail" style="background:rgb(248,239,228)">
+          <view class="coupon-wrap">
+            <image src="{{ couponDetail.logoUrl }}" alt="logo" class="logo"></image>
+            <view class="name">{{ couponDetail.appName }}</view>
+            <view class="title">{{ couponDetail.title }}</view>          
+            <view class="contact-wrap">
+              <view class="address">                    
+                  <view class="label">手机号码: </view>               
+                  <view >
+                    <input class="winput" name="tel" placeholder="请输入手机号码" type="number" maxlength="11" bindinput="inputPhoneNum" auto-focus value='{{phoneNum}}'/>
+                  </view>               
+              </view>
+              <view class="addressi">
+                      <view class="label">短信验证: </view>
+                      <view >
+                        <input class="winputi" placeholder="短信验证码" type="number" bindinput="addCode" name='code' value='{{code}}' size="mini"/> 
+                     </view>
+                      <view >
+                        <button  wx:if="{{send}}" class="sendMsg" bindtap="sendMsg">发送验证码</button>
+                        <button wx:if="{{alreadySend}}" class="sendMsg" bindtap="sendMsg">{{second+"秒后获取"}}</button>
+                      </view>
+              </view>
+              <view class="address"> 
+                  <view class="label">您的姓名: </view>
+                  <view >
+                                <input class="winput" name="name" placeholder="请输入姓名" bindinput="addnameInfo" value='{{name}}'/>
+                  </view>
+              </view>
+              <view class="address">
+                  <view class="label">您的地址:</view>
+                  <view >
+                          <input class="winput" name="address" placeholder="请输入地址信息"  bindinput="addaddressInfo" value='{{address}}'/>
+                  </view>
+              </view>
+             </view>
+          </view>   
+          <view class="receive-btn">
+            <button class="weui-btn" type="{{buttonType}}" disabled="{{disabled}}" form-type="submit">提 交</button>
+          </view>
     </view>
-    <view class="address"> 
-       <view >
-                  您的姓名: 
-                </view>
-                <view >
-                    <input class="winput" name="name" placeholder="请输入姓名" bindinput="addnameInfo" value='{{name}}'/>
-                </view>
-    </view>
-    <view class="address">
-       <view >
-                    您的地址: 
-                </view>
-                <view >
-                    <input class="winput" name="address" placeholder="请输入地址信息"  bindinput="addaddressInfo" value='{{address}}'/>
-                </view>
-    </view>
-  </view>
-  <view class="receive-btn" bindtap="receiveCoupon" style="background: {{ hasReceive ? '#ddd' : '#ffd63c;' }}"><button class="weui-btn" type="{{buttonType}}" disabled="{{disabled}}" form-type="submit">确定</button></view>
-</view>
   </form>

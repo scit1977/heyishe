@@ -118,7 +118,7 @@ Page({
           
         } else {
           wx.showModal({
-            title: '出错啦',
+            title: '错误',
             content: '验证码发送失败，请重试！',
             showCancel: false
           });
@@ -294,7 +294,7 @@ Page({
           })
         } else {
           wx.showModal({
-            title: '出错啦',
+            title: '提交失败',
             content: data.result,
             showCancel: false
           });
