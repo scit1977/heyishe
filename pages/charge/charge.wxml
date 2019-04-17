@@ -3,9 +3,13 @@
     <view >
       <image class="img" src="https://wx.heyishe.cn/img/charge.jpg"  mode="widthFix" width="750rpx" />
     </view>
-     <view >
-      <image class="img" src="https://wx.heyishe.cn/img/free.jpg" bindtap="tofree"  mode="widthFix" width="750rpx" />
-    </view>
+    
+        <view class="free" >
+            <view class="freepic" >
+              <image  src="https://wx.heyishe.cn/img/free.jpg" mode="widthFix" bindtap="tofree"  />
+            </view>
+        </view>
+    
     <view class='radios'>
         <radio-group class="radio-group" bindchange="radioChange">
         <view class='line'>

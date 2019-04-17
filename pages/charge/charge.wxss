@@ -9,6 +9,25 @@ page{
 .img{ 
  width: 100%; 
 }
+.divfree{
+  position: relative;
+  width: 100%;
+  clear: both;
+}
+.free{
+  width:375px;height:127px;background-color:rgb(229, 231, 102);margin-bottom:auto;margin-right:auto;margin-left:auto;  align-items: center; display: flex;
+  justify-content: center;  
+}
+.freepic{
+  width: 90%;
+  height: 120px;
+ text-align: center; 
+  overflow: hidden;
+  
+
+
+  
+}
 .top{
   display: flex;
   justify-content: center;  
