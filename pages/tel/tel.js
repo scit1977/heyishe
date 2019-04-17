@@ -7,13 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [],
-    indicatorDots: false,
-    autoplay: true,
-    interval: 5000,
-    duration: 1000,
-    bannerHeight: 421.5,// Math.ceil(290.0 / 750.0 * getApp().screenWidth),
-    jianjie_txt: '',
+   
     phonenum:'13203154009',
     couponDetail: {
       logoUrl: 'https://wx.heyishe.cn/img/log100.jpg',

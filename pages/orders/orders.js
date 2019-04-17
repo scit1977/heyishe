@@ -3,6 +3,7 @@ const app = getApp();
 Page({
   data: {
     address: {},
+    uid:'',
     hasAddress: false,
     total: 0,
     orderId:'',
@@ -17,7 +18,11 @@ Page({
   },
 
   onShow: function () {
-    this.data.uid = wx.getStorageSync('openid')
+
+    var uid = wx.getStorageSync('openid')
+    this.setData({     
+      uid: uid
+    })
     var pages = getCurrentPages() //获取加载的页面
 
     var currentPage = pages[pages.length - 2] //获取当前页面的对象
@@ -38,8 +43,7 @@ Page({
       // console.info("缓存数据：" + this.data.orders);
     } else {
        console.log('结算数据为空')
-    }
-    const self = this;
+    }  
     //获取用户地址信息
     this.get_address_data();
    

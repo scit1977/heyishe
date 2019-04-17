@@ -1,2 +1,20 @@
 <!--pages/card/card.wxml-->
-<text>pages/card/card.wxml</text>
+<view class="page"  id="couponDetail" style="background:rgb(248,239,228)">
+  <view class="coupon-wrap">
+    <image src="{{ couponDetail.logoUrl }}" alt="logo" class="logo"></image>
+    <view class="name">{{ couponDetail.appName }}</view>
+    <view class="title">{{ couponDetail.title }}</view>
+    <view class="sub-title">{{ couponDetail.subTitle }}</view>
+   
+    <view class="date">{{ couponDetail.useCondition }}</view>
+  
+  
+    <view class="contact-wrap">
+     
+      
+    </view>
+  </view>
+  <view class="receive-btn"  bindtap="tocard">
+   立即领取 
+  </view>
+</view>

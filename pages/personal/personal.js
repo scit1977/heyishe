@@ -15,11 +15,13 @@ Page({
     //console.log('p onShow')
     if (app.globalData.userInfo) {
       //1.1判断是否保存了全局用户信息，如果有就直接调取
+      var uid = wx.getStorageSync('openid')
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        uid:uid
       })
-      this.data.uid = wx.getStorageSync('openid')
+      
       //读取后台数据，判断用户是否有地址信息
     
       this.get_data()
