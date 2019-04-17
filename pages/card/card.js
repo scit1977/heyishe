@@ -10,21 +10,13 @@ Page({
     uid:'',
     address: {},
     hasAddress: false,
-    cardId:'pzyKc1bXM44zcuZSzSSp-EJcwE8E',
-    couponDetail: {
-      logoUrl: 'https://wx.heyishe.cn/img/log100.jpg',
-      appName: '和一舍',
-      title: '优惠券',
-      subTitle: '',
-      useCondition: '新人专享，每人一张，盘龙灸体验卷，需提前一天电话预约',
-      useData: 'useData',
-      useTime: '',
-      excludeHoliday: '',
-      excludeWeekend: '',
-      address: 'address',
-      phone: 'phone',
-      background: ''
-    }
+    cardnum:'1',
+    cardId:'',
+    logoUrl: 'https://wx.heyishe.cn/img/log100.jpg',
+    title: '',
+    appName:'和一舍',
+    useCondition: '。',
+   
   },
 
   /**
@@ -34,7 +26,63 @@ Page({
    
 
   },
-  tocard() {
+  load_cardinfo: function () {
+    //if (ifLoadMore) {
+    //console.log('load loadnews')   
+    wx.showLoading({
+      title: '加载中...'
+    });
+    //调取商品信息
+    
+    var that = this;
+    wx.request({
+      url: app.globalData.urlPath + 'getcardinfo.php',
+      method: 'POST',
+      data: {
+        cardid: that.data.cardnum
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function (res) {
+        //从数据库获取用户信息     
+        //判断是否为空
+        //console.log(res)
+        console.log(res.data)
+        // imgUrls = res.data.imgs
+        //加载更多
+        if (res.data.message == 'OK') {
+
+          console.log(res.data)
+          that.setData({
+            // loadingCount: orderList.length,
+          
+            title: res.data.card_name,//card_detail 
+            useCondition: res.data.card_detail,//card_detail 
+            cardId: res.data.card_id
+          });
+        
+
+        }
+        else {
+          //没有更多新内容
+
+
+          wx.showToast({
+            title: '获取数据失败，请重试！',
+            icon: 'loading',
+            duration: 2000
+          })
+        }
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
+    })
+
+
+  },//end of load_cardinfo
+  tocard: function () {
     if (!this.data.hasAddress) {
       wx.showModal({
         title: '提示',
@@ -56,8 +104,13 @@ Page({
     var service_url = app.globalData.urlPath + 'wxcard/cardinit.php';//需要将服务器域名添加到小程序的request合法域名中，而且必须是https开头
     wx.request({
       url: service_url,
-      data: {},
-      method: 'GET',
+      data: {
+        cardid: that.data.cardId
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
       success: function (res) {
         console.log(res);
         console.log('wx.addCard')
@@ -104,6 +157,7 @@ Page({
     this.setData({
       uid: uid
     })
+    this.load_cardinfo();
     this.get_address_data();
   },
   get_address_data() {
