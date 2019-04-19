@@ -15,14 +15,15 @@ page{
   clear: both;
 }
 .free{
-  width:375px;height:127px;background-color:rgb(229, 231, 102);margin-bottom:auto;margin-right:auto;margin-left:auto;  align-items: center; display: flex;
+  width:750rpx;height:250rpx;background-color:rgb(229, 231, 102);margin-bottom:auto;margin-right:auto;margin-left:auto;  align-items: center; display: flex;
   justify-content: center;  
 }
 .freepic{
-  width: 90%;
-  height: 120px;
+  width: 750rpx;
+  height: 250rpx;
  text-align: center; 
-  overflow: hidden;
+ overflow: hidden;
+ 
   
 
 

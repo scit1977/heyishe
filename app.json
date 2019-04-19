@@ -14,7 +14,7 @@
     "pages/personal/personal",
     "pages/authorize/authorize",
     "pages/charge/charge",
-    "pages/tel/tel",    
+    "pages/tel/tel",
     "pages/card/card"
   ],
   "window": {
@@ -45,7 +45,7 @@
         "pagePath": "pages/charge/charge",
         "iconPath": "images/charge.png",
         "selectedIconPath": "images/charge_select.png",
-        "text": "充值"
+        "text": "优惠"
       },
       {
         "pagePath": "pages/cart/cart",
@@ -60,5 +60,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
