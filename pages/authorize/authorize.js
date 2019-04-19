@@ -1,4 +1,5 @@
 const app = getApp();
+const http = require('../../utils/http.js');
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -28,11 +29,29 @@ Page({
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      var that = this;
+     
       app.globalData.userInfo = e.detail.userInfo;
       console.log(' e.detail.userInfo.nickName=' + e.detail.userInfo.nickName)
-      //插入登录的用户的相关信息到数据库
-      wx.request({
+      var that = this;
+      let url = 'wxadd_user.php';
+      let data = {
+        uid: app.globalData.openid,
+        nickName: e.detail.userInfo.nickName,
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        province: e.detail.userInfo.province,
+        city: e.detail.userInfo.city,
+        gender: e.detail.userInfo.gender,
+      }
+      http.postReq(url, data, function (res) {
+         //插入登录的用户的相关信息到数据库
+        console.log(res)
+        app.globalData.userInfo = e.detail.userInfo
+        console.log(res.data)
+        console.log("插入小程序登录用户信息成功！");
+
+      })
+     
+     /* wx.request({
         url: app.globalData.urlPath + 'wxadd_user.php',
         data: {
           uid: app.globalData.openid,
@@ -54,7 +73,7 @@ Page({
           console.log("插入小程序登录用户信息成功！");
           console.log(app.globalData.userInfo)
         }
-      });
+      });*/
       //授权成功后，跳转进入小程序首页
       wx.switchTab({
         url: '/pages/personal/personal'
@@ -76,6 +95,18 @@ Page({
   },
   //获取用户信息接口
   queryUsreInfo: function () {
+    var that = this;
+    let url = 'getuserInfo.php';
+    let data = {
+      openid: app.globalData.openid
+    }
+    http.postReq(url, data, function (res) {
+      console.log('getuserInfo.php')
+      console.log(res)
+      app.globalData.userInfo = res;
+
+    })
+    /*
     wx.request({
       url: app.globalData.urlPath + 'getuserInfo.php',
       method: "POST",
@@ -88,7 +119,7 @@ Page({
       success: function (res) {
         app.globalData.userInfo = res.data;
       }
-    });
+    });*/
   },
 
 })
