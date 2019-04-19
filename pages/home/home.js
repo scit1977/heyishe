@@ -1,5 +1,6 @@
 // pages/home/home.js
 var app = getApp()
+const http = require('../../utils/http.js');
 Page({
 
   /**
@@ -9,7 +10,7 @@ Page({
     imgUrls: [],
     indicatorDots: false,
     autoplay: true,
-    interval: 5000,
+    interval: 3000,
     duration: 1000,
     bannerHeight: 421.5,// Math.ceil(290.0 / 750.0 * getApp().screenWidth),
     jianjie_txt: ''
@@ -22,54 +23,24 @@ Page({
       this.loadnews()
   },
   loadnews: function () {
-    //if (ifLoadMore) {
-    //console.log('load loadnews')   
-    wx.showLoading({
-      title: '加载中...'
-    });
-    //调取商品信息
-    let orderList = [];
+    //postReq(url, data, cb)
     var that = this;
-    wx.request({
-      url: app.globalData.urlPath + 'gettopnews.php',      
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {
-        //从数据库获取用户信息     
-        //判断是否为空
-       //console.log(res)
-       //console.log(res.data)
-      // imgUrls = res.data.imgs
-        //加载更多
-        if (res.data.message=='OK') {
-          
-          console.log(res.data)
-          that.setData({
-            // loadingCount: orderList.length,
-            imgUrls: res.data.imgs,
-            jianjie_txt: res.data.jianjie_txt
-          });
-          var WxParse = require('../../wxParse/wxParse.js');
-          WxParse.wxParse('content', 'html', that.data.jianjie_txt, that, 25);
-
-        }
-        else {
-          //没有更多新内容
-         
-
-          wx.showToast({
-            title: '获取数据失败，请重试！',
-            icon: 'loading',
-            duration: 2000
-          })
-        }
-      },
-      complete: function () {
-        wx.hideLoading();
-      }
+    let url = 'gettopnews.php';
+    let data = {
+      type: 1,
+      page: 1
+    }
+    http.postReq(url,  data,function (res) {
+     console.log(res)
+     that.setData({
+        // loadingCount: orderList.length,
+        imgUrls: res.imgs,
+        jianjie_txt: res.jianjie_txt
+      });
+      var WxParse = require('../../wxParse/wxParse.js');
+      WxParse.wxParse('content', 'html', that.data.jianjie_txt, that, 25);
     })
+   
    
 
   },//end of loadmyorders

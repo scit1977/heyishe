@@ -1,6 +1,6 @@
 // pages/detail/detail.js
-const ajax = require('../../utils/ajax.js');
-const utils = require('../../utils/util.js');
+const http = require('../../utils/http.js');
+
 var imgUrls = [];
 var detailImg = [];
 var goodsId = null;
@@ -69,7 +69,34 @@ Page({
   },
   goodsInfoShow: function (success) {
     var that = this;
-    ajax.request({
+    http.getReq('getGoodsInfo.php?id=' + goodsId, function (data) {
+      var goodsItem = data.result;
+      var imgs = data.imgs;
+      console.log('goodsItem=')
+      console.log(goodsItem)
+      var WxParse = require('../../wxParse/wxParse.js');
+      WxParse.wxParse('content', 'html', goodsItem.p_detail, that, 25);
+      goods = {
+        // imgUrls: imgUrls,
+        title: goodsItem.name,
+        price: goodsItem.price,
+        privilegePrice: goodsItem.privilegePrice,
+        detailImg: detailImg,
+        imgUrl: goodsItem.imageurl,
+        buyRate: goodsItem.buyRate,
+        goodsId: goodsId,
+        p_detail: goodsItem.p_detail,
+        p_type: goodsItem.p_type,
+        count: 1,
+        totalMoney: goodsItem.price,
+      }
+
+      that.setData({
+        goods: goods,
+        imgs: imgs
+      })
+    })
+    /*ajax.request({
       method: 'GET',
       url: 'getGoodsInfo.php?id=' + goodsId,
       success: data => {
@@ -79,15 +106,7 @@ Page({
         console.log('goodsItem=')
         console.log(goodsItem)
         var WxParse = require('../../wxParse/wxParse.js');
-        WxParse.wxParse('content', 'html', goodsItem.p_detail, that, 25);
-      
-        //for (var i = 0; i < goodsItem.shopGoodsImageList.length; i++) {
-         // imgUrls[i] = goodsItem.shopGoodsImageList[i].imgUrl;
-        //}
-       // var details = goodsItem.details.split(";");
-       // for (var j = 0; j < details.length; j++) {
-       //   detailImg[j] = details[j];
-       // }
+        WxParse.wxParse('content', 'html', goodsItem.p_detail, that, 25); 
         goods = {
          // imgUrls: imgUrls,
           title: goodsItem.name,
@@ -110,7 +129,7 @@ Page({
         console.log(goods.p_detail)
         console.log('goods.imgUrl'+goods.imgUrl)
       }
-    })
+    })*/
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

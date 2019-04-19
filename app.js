@@ -28,7 +28,9 @@ App({
             //console.log(data);
            // console.log(data["uid"]);
             that.globalData.openid = data["uid"]
-            wx.setStorageSync('openid', data["uid"])          
+            wx.setStorageSync('openid', data["uid"]) 
+            var http = require('utils/http.js')
+            http.header.Authorization = res.data;//给header 赋值         
           },
           fail: res => {
             toast.show({ content: '微信登录失败' });

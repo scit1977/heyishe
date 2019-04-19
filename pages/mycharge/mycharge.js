@@ -1,4 +1,4 @@
-var app = getApp()
+const http = require('../../utils/http.js');
 Page({
   data: {
     orderList: [],
@@ -84,70 +84,52 @@ Page({
    
   },
   loadmyorders: function () {
-    //if (ifLoadMore) {
-    console.log('load loadmyorders')
-    console.log('进入时  isHideLoadMore=' + this.data.isHideLoadMore)
-    //console.log('page=' + this.data.page)
+    //if (ifLoadMore) { getmychargeList.php
+    
     this.setData({
       isHideLoadMore: false
     })
-    wx.showLoading({
-      title: '加载中...'
-    });
-    //调取商品信息
     let orderList = [];
     var that = this;
-    wx.request({
-      url: app.globalData.urlPath + 'getmychargeList.php',
-      data: {
-        page: this.data.page,
-        uid: this.data.uid,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {
-        //从数据库获取用户信息     
-        //判断是否为空
-        //console.log(res)
-        //console.log(res.data)
-        orderList = that.data.orderList
-        //加载更多
-        if (res.data.result.length > 0) {
-          var page = that.data.page + 1;
-          for (var i = 0; i < res.data.result.length; i++) {
-            orderList.push(res.data.result[i]);
-          }
-
-          that.setData({
-            // loadingCount: orderList.length,
-            orderList: orderList,
-            page: page
-          });
-
+    let url = 'getmychargeList.php';
+    let data = {
+      page: this.data.page,
+      uid: this.data.uid,
+    }
+    http.postReq(url, data, function (res) {
+      console.log(res)
+      orderList = that.data.orderList
+      //加载更多
+      if (res.result.length > 0) {
+        var page = that.data.page + 1;
+        for (var i = 0; i < res.result.length; i++) {
+          orderList.push(res.result[i]);
         }
-        else {
-          //没有更多新内容
-          that.setData({
-            nomore: true
-          })
 
-          wx.showToast({
-            title: '没有更多记录！',
-            icon: 'loading',
-            duration: 2000
-          })
-        }
-      },
-      complete: function () {
-        wx.hideLoading();
+        that.setData({
+          // loadingCount: orderList.length,
+          orderList: orderList,
+          page: page
+        });
+
       }
+      else {
+        //没有更多新内容
+        that.setData({
+          nomore: true
+        })
+
+        wx.showToast({
+          title: '没有更多记录！',
+          icon: 'loading',
+          duration: 2000
+        })
+      }
+
     })
     this.setData({
       isHideLoadMore: true
     })
-    console.log('结束时 isHideLoadMore=' + this.data.isHideLoadMore)
 
   },//end of loadmyorders
 

@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 var app = getApp()
+const http = require('../../utils/http.js');
 Page({
   data: {
     uid:'',
@@ -50,7 +51,46 @@ Page({
     })
   },
   get_data() {
-    var self = this;
+   
+    var that = this;
+    let url = 'getbalance.php';
+    let data = {
+      uid: this.data.uid,
+    }
+    http.postReq(url, data, function (res) {
+      console.log('res===')
+      console.log(res)
+     
+      // console.log(data.result);
+      if (res.result.name == '') {
+        //没有名字信息，跳转到地址页面让用户填写信息
+        wx.showModal({
+          title: '温馨提示',
+          content: '亲，请先完善您的个人信息哦。',
+          text: 'center',
+          complete() {
+            wx.navigateTo({
+              url: '/pages/address/address'
+            })
+          }
+        })
+      } else {
+        wx.setStorage({
+          key: 'address',
+          data: res,
+          success() {
+            // wx.navigateBack();
+           // console.log('ok' + res)
+          }
+        })
+        that.setData({
+          balance: res.result.balance,
+          tname: res.result.name
+        })
+      }
+    })
+
+     /*
     wx.showLoading({
       title: '加载中...'
     });
@@ -99,7 +139,7 @@ Page({
       complete: function () {
         wx.hideLoading();
       }
-    });
+    });*/
   },
   myAddress: function (e) {
     wx.navigateTo({ url: '../addressList/addressList' });

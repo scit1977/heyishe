@@ -1,5 +1,6 @@
 // pages/charge/charge.js
 var app = getApp()
+const http = require('../../utils/http.js');
 Page({
 
   /**
@@ -22,49 +23,26 @@ Page({
   loadcharges: function () {
    
    
-    wx.showLoading({
-      title: '加载中...'
-    });
+  
     //调取商品信息
     let items = [];
     var that = this;
-    wx.request({
-      url: app.globalData.urlPath + 'getchargelist.php',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {
-        
-        //加载更多
-        if (res.data.message == 'OK') {
-
-          
-          that.setData({
-            // loadingCount: orderList.length,
-            items: res.data.result,
-            price: 10000.00
-          });
+    let url = 'getchargelist.php';
+    let data = {
+      type: 1,
+      page: 1
+    }
+    http.postReq(url, data, function (res) {
+      console.log(res)
+      that.setData({
+        // loadingCount: orderList.length,
+        items: res.result,
+        price: 20000.00
+      });
       
-          that.setData({
-            items: that.data.items
-          }) 
-        }
-        else {
-          //没有更多新内容
-
-
-          wx.showToast({
-            title: '获取数据失败，请重试！',
-            icon: 'loading',
-            duration: 2000
-          })
-        }
-      },
-      complete: function () {
-        wx.hideLoading();
-      }
     })
+
+   
 
 
   },//end of loadmyorders

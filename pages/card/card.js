@@ -1,6 +1,7 @@
 // pages/card/card.js
 //卡券ID pzyKc1bXM44zcuZSzSSp-EJcwE8E
-const app = getApp();
+
+const http = require('../../utils/http.js');
 Page({
 
   /**
@@ -35,50 +36,21 @@ Page({
     //调取商品信息
     
     var that = this;
-    wx.request({
-      url: app.globalData.urlPath + 'getcardinfo.php',
-      method: 'POST',
-      data: {
-        cardid: that.data.cardnum
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {
-        //从数据库获取用户信息     
-        //判断是否为空
-        //console.log(res)
-        console.log(res.data)
-        // imgUrls = res.data.imgs
-        //加载更多
-        if (res.data.message == 'OK') {
+    let url = 'getcardinfo.php';
+    let data = {
+      cardid: that.data.cardnum
+    }
+    http.postReq(url, data, function (res) {
+      console.log(res)
+      that.setData({
+        // loadingCount: orderList.length,
+        title: res.card_name,//card_detail 
+        useCondition: res.card_detail,//card_detail 
+        cardId: res.card_id
+      });
 
-          console.log(res.data)
-          that.setData({
-            // loadingCount: orderList.length,
-          
-            title: res.data.card_name,//card_detail 
-            useCondition: res.data.card_detail,//card_detail 
-            cardId: res.data.card_id
-          });
-        
-
-        }
-        else {
-          //没有更多新内容
-
-
-          wx.showToast({
-            title: '获取数据失败，请重试！',
-            icon: 'loading',
-            duration: 2000
-          })
-        }
-      },
-      complete: function () {
-        wx.hideLoading();
-      }
     })
+   
 
 
   },//end of load_cardinfo
@@ -101,46 +73,40 @@ Page({
   },
   getcard: function () {
     var that = this;
-    var service_url = app.globalData.urlPath + 'wxcard/cardinit.php';//需要将服务器域名添加到小程序的request合法域名中，而且必须是https开头
-    wx.request({
-      url: service_url,
-      data: {
-        cardid: that.data.cardId
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {
-        console.log(res);
-        console.log('wx.addCard')
-        wx.addCard({
-          cardList: [{
-            cardId: that.data.cardId,
-            cardExt: '{"code":"","openid":"","timestamp":' + res.data.timestamp + ',"nonce_str":"' + res.data.nonce_str + '","signature":"' + res.data.signature + '"}'
-          }],//这里需要注意的是cardExt参数的value值是 String类型，不要使用对象发送；另外openid如果在创建优惠券的时候没有指定，则这边为空，千万不要填写当前用户的openid
-          success: function (result) {
-            console.log('领取成功');
-            console.log(result);
+    let url = 'wxcard/cardinit.php';
+    let data = {
+      cardid: that.data.cardId
+    }
+    http.postReq(url, data, function (res) {
+      console.log(res)
+      wx.addCard({
+        cardList: [{
+          cardId: that.data.cardId,
+          cardExt: '{"code":"","openid":"","timestamp":' + res.timestamp + ',"nonce_str":"' + res.nonce_str + '","signature":"' + res.signature + '"}'
+        }],//这里需要注意的是cardExt参数的value值是 String类型，不要使用对象发送；另外openid如果在创建优惠券的时候没有指定，则这边为空，千万不要填写当前用户的openid
+        success: function (result) {
+          console.log('领取成功');
+          console.log(result);
 
-            /* wx.showToast({
-               title: '领取成功',
-               icon: 'success',
-               duration: 2000
-             });*/
-          },
-          fail: function (result) {
-            console.log('领取失败');
-            console.log(result);
-          },
-          complete: function (res) {
-            console.log('领取完成');
-            console.log(res)
-          }
-        })
+          /* wx.showToast({
+             title: '领取成功',
+             icon: 'success',
+             duration: 2000
+           });*/
+        },
+        fail: function (result) {
+          console.log('领取失败');
+          console.log(result);
+        },
+        complete: function (res) {
+          console.log('领取完成');
+          console.log(res)
+        }
+      })
 
-      }
     })
+   
+  
   }, 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -161,42 +127,29 @@ Page({
     this.get_address_data();
   },
   get_address_data() {
-    var self = this;
-    wx.showLoading({
-      title: '加载中...'
-    });
-    wx.request({
-      url: app.globalData.urlPath + 'getaddress.php',
-      method: "POST",
-      data: {
-        uid: this.data.uid,
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {  //后端返回的数据
-        var data = res.data;
-        // console.log(data.result);
-        self.setData({
-          address: data.result
+   
+    var that = this;
+    let url = 'getaddress.php';
+    let data = {
+      uid: this.data.uid
+    }
+    http.postReq(url, data, function (res) {
+      console.log(res)
+      that.setData({
+        // loadingCount: orderList.length,
+        address: res.result
+      });
+      if (that.data.address.name != null && that.data.address.name != '' && that.data.address.name != undefined) {
+        //console.log('姓名不等于空')
+        //if (self.data.address.name.length > 1) {
+        that.setData({
+          //address: res.data,
+          hasAddress: true
         })
-        console.log('this.data.address.name' + self.data.address.name)
-        //console.log('this.data.address.name.length' + this.data.address.name.length)
-        if (self.data.address.name != null && self.data.address.name != '' && self.data.address.name != undefined) {
-          //console.log('姓名不等于空')
-          //if (self.data.address.name.length > 1) {
-          self.setData({
-            //address: res.data,
-            hasAddress: true
-          })
-          //}
-
-        }
-      },
-      complete: function () {
-        wx.hideLoading();
       }
-    });
+    })
+
+   
   },
   /**
    * 生命周期函数--监听页面隐藏

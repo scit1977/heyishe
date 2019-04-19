@@ -1,5 +1,6 @@
 // page/component/new-pages/user/address/address.js
 const app = getApp();
+const http = require('../../utils/http.js');
 Page({
   data: {
     uid: '',

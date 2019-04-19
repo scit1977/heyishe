@@ -1,5 +1,5 @@
 // pages/classify/classify.js
-const ajax = require('../../utils/ajax.js');
+const http = require('../../utils/http.js');
 const utils = require('../../utils/util.js');
 Page({
 
@@ -33,7 +33,7 @@ Page({
   },
   classifyShow: function (success) {
     var that = this;
-    ajax.request({
+   /* ajax.request({
       method: 'GET',
       url: 'getGoodClassList.php',
       success: data => {
@@ -43,6 +43,14 @@ Page({
         })
         console.log(data.result)
       }
+    })*/
+    http.getReq("getGoodClassList.php", function (res) {
+      console.log("banner==")
+      console.log(res)
+      that.setData({
+        classifyItems: res.result
+      })
     })
+
   },
 })
