@@ -8,7 +8,7 @@ Page({
    */
 
   data: {
-  
+    ad_img: '',
     items: [],
     price:''
   },
@@ -37,6 +37,7 @@ Page({
       that.setData({
         // loadingCount: orderList.length,
         items: res.result,
+        ad_img: res.ad_img,
         price: 20000.00
       });
       

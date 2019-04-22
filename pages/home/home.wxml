@@ -11,3 +11,12 @@
   <view class="contents">      
        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
   </view> 
+  <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+        <view class='ruleZhezhaoContent'>
+            <view class='ruleZhezhaoText' >
+              <image  src="{{ad_img}}" mode="widthFix" bindtap="tofree"  width="70%"/>
+            </view>
+            <image src='../../images/close.png' class='ruleHide' bindtap='hideRule'></image>
+        </view>
+    </view>
+

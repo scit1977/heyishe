@@ -6,7 +6,7 @@
     
         <view class="free" >
             <view class="freepic" >
-              <image  src="https://wx.heyishe.cn/img/free.jpg" mode="widthFix" bindtap="tofree"  width="750rpx"/>
+              <image  src="{{ad_img}}" mode="widthFix" bindtap="tofree"  width="750rpx"/>
             </view>
         </view>
     
