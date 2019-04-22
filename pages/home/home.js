@@ -8,7 +8,7 @@ Page({
    */
   data: {
     timer: '',//定时器名字
-    countDownNum: '5',//倒计时初始值
+    countDownNum: '8',//倒计时初始值
     isRuleTrue:true,
     imgUrls: [],
     ad_img:'',
