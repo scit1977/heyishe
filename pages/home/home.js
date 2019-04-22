@@ -47,7 +47,7 @@ Page({
     that.setData({
       timer: setInterval(function () {//这里把setInterval赋值给变量名为timer的变量
         //每隔一秒countDownNum就减一，实现同步
-        console.log('countDownNum' + countDownNum)
+        //console.log('countDownNum' + countDownNum)
         countDownNum--;
         //然后把countDownNum存进data，好让用户知道时间在倒计着
         that.setData({
