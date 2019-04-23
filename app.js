@@ -7,7 +7,21 @@ App({
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
     // 登录
-   
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        this.globalData.Custom = custom;
+        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+        let CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+        console.log('CustomBar='+ CustomBar)
+        //适配全面屏底部距离
+        if (CustomBar > 75) {
+          this.globalData.tabbar_bottom = "y"
+        }
+
+      }
+    })
     wx.login({
       success: res => {
         //code 用于获取openID的条件之一

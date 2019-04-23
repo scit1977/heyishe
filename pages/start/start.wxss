@@ -115,6 +115,16 @@ page{
   84% {transform: translate3d(0,15rpx,0) rotate(15deg); }
   100% {transform: translate3d(0,20rpx,0) rotate(-15deg); }
 }
+.gif-wave{
+  position: absolute;
+  width: 100%;
+  bottom: -100;
+  left: 0;
+  z-index: 99;
+  mix-blend-mode: screen;  
+  height: 100rpx;   
+}
+
 .wave {
   position: absolute;
   z-index: 3;

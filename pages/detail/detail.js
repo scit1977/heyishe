@@ -1,6 +1,6 @@
 // pages/detail/detail.js
 const http = require('../../utils/http.js');
-
+const app = getApp();
 var imgUrls = [];
 var detailImg = [];
 var goodsId = null;
@@ -11,6 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    StatusBar: app.globalData.StatusBar + 7,
+    TabbarBot: app.globalData.tabbar_bottom,
     isLike: false,
     showDialog: false,
     goods: null,
@@ -29,7 +31,16 @@ Page({
       urls: this.data.imgUrls // 需要预览的图片http链接列表  
     })
   },
-
+  toBack() {
+    wx.navigateBack({
+      delta: 1
+    });
+  },
+  toHome() {
+    wx.reLaunch({
+      url: '/pages/home/home',
+    })
+  },
   // 跳到购物车
   toCar() {
     wx.switchTab({ url: '../cart/cart' })

@@ -19,9 +19,9 @@
     "pages/card/card"
   ],
   "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#802b1f",
-    "navigationBarTitleText": "和一舍",
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "Color UI",
+    "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

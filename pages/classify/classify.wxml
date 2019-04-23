@@ -1,4 +1,5 @@
 <!--主盒子-->
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">服务项目</view></cu-custom>
 <view class="container">
   <!--左侧栏-->
   <view class="nav_left">
