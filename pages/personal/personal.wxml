@@ -1,3 +1,4 @@
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">个人中心</view></cu-custom>
 <view class="userinfo">
   <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="userinfo-btn"> 点击微信授权 </button>
   <block wx:else>

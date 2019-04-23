@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
   data: {//28.167880,112.995960
     height:'',
@@ -17,7 +18,11 @@ Page({
     wx.getSystemInfo({
 
       success: function (res) {
-        var height = res.windowHeight - 50;
+        //CustomBar
+        console.log('res.windowHeight' + res.windowHeight);
+        console.log('app.globalData.StatusBar' + app.globalData.StatusBar);
+        console.log('app.globalData.CustomBar' + app.globalData.CustomBar);
+        var height = res.windowHeight - app.globalData.CustomBar- 40;
         console.log(height);
         that.setData({
 

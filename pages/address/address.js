@@ -12,8 +12,7 @@ Page({
     backcode:'',
     phoneNum:'',
     name:'',
-    address:'',
-    buttonType: 'default',
+    address:'',   
     wmessage:'',
     couponDetail: {
       logoUrl: 'https://wx.heyishe.cn/img/log100.jpg',

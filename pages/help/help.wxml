@@ -1,3 +1,4 @@
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">地图导航</view></cu-custom>
 <view class="page-body">
   <view class="page-section page-section-gap">
     <map
@@ -11,7 +12,7 @@
     ></map>
   </view>
   <view class="btn-area">
-    <button bindtap="makecall" class="page-body-button" type="primary">咨询热线</button>
-   <button bindtap="daohang" class="page-body-button" type="primary">导航前往</button>
+    <button bindtap="makecall" class="cu-btn round bg-olive justify-center flex padding" >咨询热线</button>
+   <button bindtap="daohang" class="cu-btn round bg-blue justify-center flex padding " >导航前往</button>
   </view>
 </view>

@@ -2,8 +2,7 @@
 page{
     height: 100%;
     width: 100%;
-    background: #802b1f;
-    margin-top:40px;
+    background: #802b1f;    
 }
 .page-group{
   display: table;
@@ -37,7 +36,7 @@ page{
     height: auto;
     width: 100%;
     overflow: hidden;  
-    padding-top:20rpx;  
+  
 }
 
 .order{

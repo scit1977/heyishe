@@ -1,4 +1,5 @@
 <!--pages/address/address.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">个人信息</view></cu-custom>
 <form bindsubmit="formSubmit" class='myform'>
     <view class="page"  id="couponDetail" style="background:rgb(248,239,228)">
           <view class="coupon-wrap">
@@ -36,7 +37,7 @@
               </view>
              </view>
           </view>   
-          <view class="receive-btn">
+        <view class="receive-btn">
             <button class="weui-btn" type="{{buttonType}}" disabled="{{disabled}}" form-type="submit">提 交</button>
           </view>
     </view>

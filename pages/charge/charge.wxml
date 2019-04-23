@@ -1,4 +1,5 @@
 <!--pages/charge/charge.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">优惠充值</view></cu-custom>
 <view class="page">
     <view >
       <image class="img" src="https://wx.heyishe.cn/img/charge.jpg"  mode="widthFix" width="750rpx" />

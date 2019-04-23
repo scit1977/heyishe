@@ -1,4 +1,5 @@
 <!--pages/orders/orders.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">结算中心</view></cu-custom>
 <view class="main">
     <navigator url="../address/address">
         <view wx:if="{{hasAddress}}" class="orders-address">
@@ -20,6 +21,8 @@
 
     <view class="orders-footer">
         <view class="orders-footer-total">付款合计：￥{{total}}</view>
-        <view class="orders-footer-btn" bindtap="toPay">去付款</view>
+        
+        <view class="button-red">    
+     <button class="cu-btn round bg-red shadow" bindtap="toPay" >去支付</button>  </view>
     </view>
 </view>

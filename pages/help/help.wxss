@@ -11,7 +11,11 @@
   float: left; 
 }
 .btn-area {
-  text-align: center;
+   display: flex;
+  flex-wrap: wrap;
+  padding: 0px 20rpx 0px;  
+    justify-content: center;
+    align-items: center;
   width: 100%;
-  float: left; 
+  
 }

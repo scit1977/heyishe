@@ -25,9 +25,7 @@
  
 <!--商品属性-->
 <view class="bg-white grid col-3 canui-goods-box text-gray text-sm">
-    <view class='padding-sm'>剩余：9999</view>
-    <view class='padding-sm text-center'>销量：98笔</view>
-    <view class='padding-sm text-right'>快递包邮</view>
+    
 </view>
  
 <!--商品详情-->

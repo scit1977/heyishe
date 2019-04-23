@@ -88,3 +88,12 @@
     color: #fff;
     background: #f44336;
 }
+.button-red {
+   
+  position: fixed;
+  right: 5px;  
+  text-align: center;
+  display: inline-block;
+  
+  /* border: 1rpx solid #ccc; */
+}

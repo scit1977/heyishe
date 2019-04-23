@@ -1,4 +1,5 @@
 <!--pages/tel/tel.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">咨询热线</view></cu-custom>
 <view class="page"  id="couponDetail" style="background:rgb(248,239,228)">
   <view class="coupon-wrap">
     <image src="{{ couponDetail.logoUrl }}" alt="logo" class="logo"></image>

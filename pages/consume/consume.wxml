@@ -1,5 +1,5 @@
 <!--pages/mycharge/mycharge.wxml-->
-
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">我的消费</view></cu-custom>
          <view class="page-group">
               <view class="page-group-position" style="opacity:1"></view>
               <view bindtap="bindViewTap_sy" class="page-nav-list"><text>首页</text></view>
