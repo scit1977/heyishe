@@ -41,7 +41,7 @@ page {
   padding-top:10rpx; 
   padding-bottom:10rpx;
 }
-.title{
+.titletop{
   font-size: 40rpx;
   font-weight: bold;
   text-align: center;
@@ -74,7 +74,7 @@ page {
   text-align: center;
   color: #777;
 }
-#couponDetail .coupon-wrap .title {
+#couponDetail .coupon-wrap .titletop {
   text-align: center;
   margin-top:10px;
   margin-bottom: 10px;
