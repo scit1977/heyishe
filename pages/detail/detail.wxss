@@ -26,7 +26,7 @@
 }
  
 .canui-goods-box{
-    padding:10rpx 30rpx;
+    padding:10rpx 10rpx;
 }
  
 .canui-xzwz{
@@ -34,6 +34,7 @@
 }
 .cauni-details-box{
     word-wrap:break-word;
+    text-align: center;
 }
 .cu-bar.tabbar.shop .action {
     width:100rpx;

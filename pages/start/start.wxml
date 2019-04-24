@@ -15,9 +15,9 @@
       <view class="bd">
          <image class="smalltitle" src="../../images/confirm-word1.png"></image>
         <view class="confirm-btn" bindtap='goToIndex'>
-          <text >进入和一社</text>
+          <text >进入和一舍</text>
         </view>
-        <text class="copyright">@和一社</text>
+        <text class="copyright">和一舍@2019</text>
       </view>
     </view>
   </block>

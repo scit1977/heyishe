@@ -1,39 +1,31 @@
 <cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">服务项目</view></cu-custom>
 <!--主盒子-->
-
-<view class="container">
-  <!--左侧栏-->
-  <view class="nav_left">
-    <block wx:for="{{classifyItems}}">
-      <!--当前项的id等于item项的id，那个就是当前状态-->
-      <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
-      <!-- <view class="left_cate">
-        <view class="separate"></view>
-        <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">
-          {{item.cate_name}}
-        </view>
-      </view> -->
-
-      <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">
-          {{item.name}}
-        </view>
-    </block>
-  </view>
-  <!--右侧栏-->
-  <view class="nav_right">
-    <!--如果有数据，才遍历项-->
-    <view wx:if="{{classifyItems[curIndex].ishaveChild}}">
-      <block wx:for="{{classifyItems[curIndex].shopClassifyDtoList}}">
-        <view class="nav_right_items">
-        <!--界面跳转 -->
+<view class="VerticalBox">
+ <!--左侧栏-->
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 375rpx)">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{classifyItems}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+   <!--右侧主栏-->
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 375rpx)"  >
+     <!--分支总标题 -->
+    <view class='cu-bar solid-bottom bg-white'>
+     <view class='action'>
+          <text class='icon-title text-green'></text> {{classifyItems[MainCur].name}}
+      </view>
+    </view>
+    <view class="padding-top padding-lr">
+      <view  wx:for="{{classifyItems[MainCur].shopClassifyDtoList}}" wx:key id="main-{{index}}">     
+      <!--界面跳转 -->     
+       <view class="nav_right_items">        
           <navigator url="/pages/detail/detail?goodsId={{item.goodid}}">
             <image src="{{item.imageurl}}"></image>
             <text>{{item.name}}</text>
           </navigator>
-        </view>
-      </block>
-    </view>
-    <!--如果无数据，则显示数据-->
-    <view class="nodata_text" wx:else>该分类暂无数据</view>
-  </view>
-</view>
+        </view><!--nav_right_items end -->        
+     </view> <!--wx:for end --> 
+     </view> <!--padding-top padding-lr end -->  
+   </scroll-view>
+</view>  
+

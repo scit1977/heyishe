@@ -9,9 +9,19 @@ Page({
   data: {
     classifyItems: [],
     curNav: 0,
-    curIndex: 0
+    curIndex: 0,
+    TabCur: 0,
+    MainCur: 0,
+    VerticalNavTop: 0
   },
-
+  tabSelect(e) {
+    console.log('tabSelect' + e.currentTarget.dataset.id)
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      MainCur: e.currentTarget.dataset.id,
+      VerticalNavTop: (e.currentTarget.dataset.id - 1) * 50
+    })
+  },
   //事件处理函数  
   switchRightTab: function (e) {
     // 获取item项的id，和数组的下标值  

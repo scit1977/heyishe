@@ -32,16 +32,16 @@
 <view class="cu-bar bg-white margin-top solid-bottom">
     <view class='action'>
         <text class='icon-title text-red'></text>
-        <text>商品详情</text>
+        <text>服务详情</text>
     </view>
 </view>
 <view class="bg-white padding cauni-details-box">
-<scroll-view scroll-y="true">
+
     <block wx:for-items="{{imgs}}" wx:key="name">
-       <image class="image_detail" src="{{item}}" mode="widthFix"/> 
+       <image src="{{item}}" mode="widthFix" width="375px"/> 
     </block>
      <template is="wxParse"  data="{{wxParseData:content.nodes}}"/>
-     </scroll-view>
+   
 </view>
  
 <!--TabbarBot为适配全面屏的，如果是全面屏，则底部多出一截空白-->

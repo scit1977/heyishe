@@ -38,7 +38,7 @@ page{
     padding: 20rpx 0;
     width: 80%;
     background: #e1d2b1;
-    margin: 20% auto;
+    margin: 25% auto;
     border-radius: 20rpx;
     display: flex;
     flex-direction: column;
