@@ -23,9 +23,9 @@ App({
         if (CustomBar > 75) {
           this.globalData.tabbar_bottom = "y"
         }
-        console.log('custom=' + custom.top)
-        console.log('CustomBar=' + CustomBar)
-        console.log('tabbar_bottom=' + this.globalData.tabbar_bottom)
+       // console.log('custom=' + custom.top)
+        //console.log('CustomBar=' + CustomBar)
+        //console.log('tabbar_bottom=' + this.globalData.tabbar_bottom)
 
       }
     })
@@ -51,8 +51,8 @@ App({
            // console.log(data["uid"]);
             that.globalData.openid = data["uid"]
             wx.setStorageSync('openid', data["uid"]) 
-            var http = require('utils/http.js')
-            http.header.Authorization = res.data;//给header 赋值         
+            //var http = require('utils/http.js')
+           // http.header.Authorization = res.data;//给header 赋值         
           },
           fail: res => {
             toast.show({ content: '微信登录失败' });
