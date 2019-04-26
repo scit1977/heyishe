@@ -218,33 +218,7 @@ Page({
   },
   get_data(){
     //获取原有数据
-    var that = this;
-    let url = 'getaddress.php';
-    let data = {
-      uid: this.data.uid,
-    }
-    http.postReq(url, data, function (res) {
-      console.log(res)
-      that.setData({
-        // loadingCount: orderList.length,
-        address: res.result.address,
-        phoneNum: res.result.tel,
-        name: res.result.name,  
-      });
-      //var http = require('utils/http.js')
-      http.header.Authorization = res.token;//给header 赋值   
-      if (res.result.tel.length == 11) {
-        that.showSendMsg()
-        //self.hideSendMsg()
-        //self.setData({
-        // send: true
-        // })
-      }
-
-    })
-
-
-    /*var self=this;
+    var self=this;
     wx.showLoading({
       title: '加载中...'
     });
@@ -280,7 +254,7 @@ Page({
       complete: function () {
         wx.hideLoading();
       }
-    });*/
+    });
    
   },
   input_data(value){
