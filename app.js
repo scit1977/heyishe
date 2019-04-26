@@ -1,12 +1,16 @@
 //app.js
 App({
+  globalData: {
+    userInfo: null,
+    urlPath: 'https://wx.heyishe.cn/wxshop/',
+    openid: '',
+    StatusBar:'',
+    CustomBar:'60',
+    tabbar_bottom:''
+  },
   onLaunch: function () {
     // 展示本地存储能力   
-    var that=this; 
-    //var logs = wx.getStorageSync('logs') || []
-    //logs.unshift(Date.now())
-    //wx.setStorageSync('logs', logs)
-    // 登录
+    var that=this;   
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -14,14 +18,18 @@ App({
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
         let CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-        console.log('CustomBar='+ CustomBar)
+       
         //适配全面屏底部距离
         if (CustomBar > 75) {
           this.globalData.tabbar_bottom = "y"
         }
+        console.log('custom=' + custom.top)
+        console.log('CustomBar=' + CustomBar)
+        console.log('tabbar_bottom=' + this.globalData.tabbar_bottom)
 
       }
     })
+    // 登录
     wx.login({
       success: res => {
         //code 用于获取openID的条件之一
@@ -92,10 +100,6 @@ App({
         }
       }
     })
-  },
-  globalData: {
-    userInfo: null,
-    urlPath:'https://wx.heyishe.cn/wxshop/',
-    openid: ''
   }
+  
 })
