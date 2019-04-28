@@ -47,8 +47,8 @@
 <!--TabbarBot为适配全面屏的，如果是全面屏，则底部多出一截空白-->
 <view class="cu-bar bg-white tabbar border shop canui-foor-fixed {{TabbarBot=='y'?'canui-tabbar-bottom':''}}">
   
-    <button class="action text-grey" open-type='contact'>
-        <view class='icon-service'></view> 客服
+    <button class="action text-grey" bindtap='toHome'>
+        <view class='icon-home'></view> 首页
     </button>
     <view class="action text-grey" bindtap="toCar">
         <view class='icon-cart'></view> 购物车

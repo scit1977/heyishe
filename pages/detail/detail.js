@@ -77,14 +77,37 @@ Page({
    
     //加载商品详情
     that.goodsInfoShow();
+    that.goodsClick(goodsId);
+  },
+  goodsClick(goodsId) {
+    console.log('增加商品用户点击数量');
+    /*var that = this;
+    ajax.request({
+      method: 'GET',
+      url: 'goods/addGoodsClickRate?key=' + utils.key + '&goodsId=' + goodsId,
+      success: data => {
+        console.log("用户点击统计返回结果：" + data.message)
+      }
+    })*/
+    var that = this;
+    let url = 'addGoodsClick.php';
+    let data = {
+      goodsId: goodsId,
+      
+    }
+    http.postReq(url, data, function (res) {
+      console.log(res)
+     
+
+    })
   },
   goodsInfoShow: function (success) {
     var that = this;
     http.getReq('getGoodsInfo.php?id=' + goodsId, function (data) {
       var goodsItem = data.result;
       var imgs = data.imgs;
-      console.log('goodsItem=')
-      console.log(goodsItem)
+     // console.log('goodsItem=')
+     // console.log(goodsItem)
       var WxParse = require('../../wxParse/wxParse.js');
       WxParse.wxParse('content', 'html', goodsItem.p_detail, that, 25);
       goods = {
@@ -107,40 +130,7 @@ Page({
         imgs: imgs
       })
     })
-    /*ajax.request({
-      method: 'GET',
-      url: 'getGoodsInfo.php?id=' + goodsId,
-      success: data => {
-       
-        var goodsItem = data.result;
-        var imgs=data.imgs;
-        console.log('goodsItem=')
-        console.log(goodsItem)
-        var WxParse = require('../../wxParse/wxParse.js');
-        WxParse.wxParse('content', 'html', goodsItem.p_detail, that, 25); 
-        goods = {
-         // imgUrls: imgUrls,
-          title: goodsItem.name,
-          price: goodsItem.price,
-          privilegePrice: goodsItem.privilegePrice,
-          detailImg: detailImg,
-          imgUrl: goodsItem.imageurl,
-          buyRate: goodsItem.buyRate,
-          goodsId: goodsId,
-          p_detail: goodsItem.p_detail,
-          p_type: goodsItem.p_type,
-          count: 1,
-          totalMoney: goodsItem.price,
-        }
-
-        that.setData({
-          goods: goods,
-          imgs:imgs
-        })
-        console.log(goods.p_detail)
-        console.log('goods.imgUrl'+goods.imgUrl)
-      }
-    })*/
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -201,14 +191,14 @@ Page({
    * sku 关闭
    */
   closeDialog: function () {
-    console.info("关闭");
+    //console.info("关闭");
     this.setData({
       showDialog: false
     });
   },
   /* 减数 */
   delCount: function (e) {
-    console.log("刚刚您点击了减1");
+    //console.log("刚刚您点击了减1");
     var count = this.data.goods.count;
     // 商品总数量-1
     if (count > 1) {
@@ -222,7 +212,7 @@ Page({
   },
   /* 加数 */
   addCount: function (e) {
-    console.log("刚刚您点击了加1");
+    //console.log("刚刚您点击了加1");
     var count = this.data.goods.count;
     // 商品总数量-1  
     if (count < 10) {
@@ -256,7 +246,7 @@ Page({
 
     // 获取购物车的缓存数组（没有数据，则赋予一个空数组）  
     var arr = wx.getStorageSync('cart') || [];
-    console.log("arr,{}", arr);
+   // console.log("arr,{}", arr);
     if (arr.length > 0) {
       // 遍历购物车数组  
       for (var j in arr) {
