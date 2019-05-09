@@ -2,7 +2,7 @@
 App({
   globalData: {
     userInfo: null,
-    urlPath: 'https://wx.heyishe.cn/wxshop/',
+    urlPath: 'https://t.heyishe.cn/index.php/wx/',
     openid: '',
     StatusBar:'',
     CustomBar:'60',
@@ -36,8 +36,8 @@ App({
         var code = res.code;
        // console.log('app.js code=' + code);
         wx.request({
-          url: that.globalData.urlPath+'/wxpay/wxgetopenid.php',
-          //url: 'https://www.heyish.cn/wxshop/wxpay/wxgetopenid.php',
+         url: that.globalData.urlPath+'wxgetopenid/',
+         // url: 'https://t.heyishe.cn/index.php/wx',
           method: "POST",
           data: {            
             code: code,         
@@ -47,7 +47,7 @@ App({
           },
           success: function (res) {  //后端返回的数据
             var data = res.data;
-            //console.log(data);
+            console.log(data);
            // console.log(data["uid"]);
             that.globalData.openid = data["uid"]
             wx.setStorageSync('openid', data["uid"]) 

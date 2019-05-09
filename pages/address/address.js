@@ -96,7 +96,7 @@ Page({
     var sessionId = wx.getStorageSync('sessionId');
     //console.log('sessionId=' + sessionId)
     wx.request({
-      url: app.globalData.urlPath + 'sendsms.php',
+      url: app.globalData.urlPath + 'Sendsmsdo/index/',
       method: "POST",
       data: {
         phoneNum: phoneNum
@@ -107,8 +107,8 @@ Page({
       },     
       success: function (res) {
         var data = res.data; 
-        console.log(res)
-        console.log(data.message)
+        //console.log(res)
+       // console.log(data.message)
         //判断验证码发送状态
         if ((data.message === 'OK') && (data.result === 'OK')) {
           wx.showToast({
@@ -217,11 +217,30 @@ Page({
   
   },
   get_data(){
+    var that = this;
+    let url = 'Getaddressedit/index/';
+    let data = {
+      uid: this.data.uid
+    }
+    http.postReq(url, data, function (res) {
+      console.log(res)      
+      that.setData({
+        address: res.result.address,
+        phoneNum: res.result.tel,
+        name: res.result.name,
+      })
+      wx.setStorageSync('sessionId', res.sessionid)
+     // console.log('address=' + that.data.address)
+      if (res.result.tel.length == 11) {
+        that.showSendMsg()
+        that.activeButton()
+       
+      }
+    })  
     //获取原有数据
+    /*
     var self=this;
-    wx.showLoading({
-      title: '加载中...'
-    });
+   
     wx.request({
       url: app.globalData.urlPath +'getaddress.php',     
       method: "POST",
@@ -254,7 +273,7 @@ Page({
       complete: function () {
         wx.hideLoading();
       }
-    });
+    });*/
    
   },
   input_data(value){
@@ -264,7 +283,7 @@ Page({
     });
     var sessionId = wx.getStorageSync('sessionId');
     wx.request({
-      url: app.globalData.urlPath +'editaddress.php',
+      url: app.globalData.urlPath +'Editaddress/index/',
       //url: 'https://www.heyish.cn/wxshop/wxpay/wxpayindex.php',
       method: "POST",
       data: {

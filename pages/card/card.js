@@ -30,18 +30,19 @@ Page({
   load_cardinfo: function () {
     //if (ifLoadMore) {
     //console.log('load loadnews')   
-    wx.showLoading({
-      title: '加载中...'
-    });
-    //调取商品信息
+   // wx.showLoading({
+     // title: '加载中...'
+   // });
+    //调取卡片信息
     
     var that = this;
-    let url = 'getcardinfo.php';
+    let url = 'Getcardinfo/index/';
     let data = {
       cardid: that.data.cardnum
     }
     http.postReq(url, data, function (res) {
-      console.log(res)
+      //console.log(res)
+      res=res.result
       that.setData({
         // loadingCount: orderList.length,
         title: res.card_name,//card_detail 
@@ -73,12 +74,15 @@ Page({
   },
   getcard: function () {
     var that = this;
-    let url = 'wxcard/cardinit.php';
+    let url = 'Wxcardinit/index/';
     let data = {
       cardid: that.data.cardId
     }
     http.postReq(url, data, function (res) {
       console.log(res)
+      console.log(res.timestamp)
+      console.log(res.nonce_str)
+      console.log(res.signature)
       wx.addCard({
         cardList: [{
           cardId: that.data.cardId,
@@ -129,7 +133,7 @@ Page({
   get_address_data() {
    
     var that = this;
-    let url = 'getaddress.php';
+    let url = 'getaddress/index/';
     let data = {
       uid: this.data.uid
     }

@@ -69,13 +69,13 @@ Page({
   loadnews: function () {
     //postReq(url, data, cb)
     var that = this;
-    let url = 'gettopnews.php';
+    let url = 'gettopnews/';
     let data = {
       type: 1,
       page: 1
     }
     http.postReq(url,  data,function (res) {
-     console.log(res)
+    // console.log(res)
      that.setData({
         // loadingCount: orderList.length,
         imgUrls: res.imgs,

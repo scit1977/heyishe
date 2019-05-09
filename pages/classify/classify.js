@@ -28,6 +28,7 @@ Page({
     let id = e.target.dataset.id,
       index = parseInt(e.target.dataset.index);
     // 把点击到的某一项，设为当前index  
+    console.log('index='+index)
     this.setData({
       curNav: id,
       curIndex: index
@@ -54,7 +55,7 @@ Page({
         console.log(data.result)
       }
     })*/
-    http.getReq("getGoodClassList.php", function (res) {
+    http.getReq("getGoodClassList/", function (res) {
       console.log("banner==")
       console.log(res)
       that.setData({

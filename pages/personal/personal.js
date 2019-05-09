@@ -53,7 +53,7 @@ Page({
   get_data() {
    
     var that = this;
-    let url = 'getbalance.php';
+    let url = 'getbalance/index';
     let data = {
       uid: this.data.uid,
     }

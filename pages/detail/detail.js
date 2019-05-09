@@ -90,7 +90,7 @@ Page({
       }
     })*/
     var that = this;
-    let url = 'addGoodsClick.php';
+    let url = 'addGoodsClick/index/';
     let data = {
       goodsId: goodsId,
       
@@ -103,7 +103,7 @@ Page({
   },
   goodsInfoShow: function (success) {
     var that = this;
-    http.getReq('getGoodsInfo.php?id=' + goodsId, function (data) {
+    http.getReq('getGoodsInfo/index/id/' + goodsId, function (data) {
       var goodsItem = data.result;
       var imgs = data.imgs;
      // console.log('goodsItem=')

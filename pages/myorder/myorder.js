@@ -1,4 +1,3 @@
-//var app = getApp()
 const http = require('../../utils/http.js');
 Page({
   data: {
@@ -8,34 +7,12 @@ Page({
     nomore: false,    
     uid:''   
   },
-  bindViewTap_sy:function(){
-    wx.switchTab({
-      url: '../home/home'
-    })
-  },
-  bindViewTap_xm: function () {
-    wx.switchTab({
-      url: '../classify/classify'
-    })
-  },
-  bindViewTap_cz: function () {
-    wx.switchTab({
-      url: '../charge/charge'
-    })
-  },
-  bindViewTap_me: function () {
-    wx.switchTab({
-      url: '../personal/personal'
-    })
-  },
+  
   onLoad: function (options) {
-    // 页面初始化 options为页面跳转所带来的参数
-    // 页面显示
+  
     var that=this
     this.data.uid = wx.getStorageSync('openid')
-    console.log('第一次 页面 isHideLoadMore=' + this.data.isHideLoadMore)
-    // 这里要注意，微信的scroll-view必须要设置高度才能监听滚动事件，所以，需要在页面的onLoad事件中给scroll-view的高度赋值
-    //原文：https://blog.csdn.net/qq_35695041/article/details/80236489 
+   
     wx.getSystemInfo({
 
       success: function (res) {
@@ -72,10 +49,8 @@ Page({
   },
 
   /**       * 页面上拉触底事件的处理函数       */
-  onReachBottom: function () {
+  onReachBottom: function () {  
    
-  
-    console.log('加载更多')
     if (!this.data.nomore) {
       wx.showNavigationBarLoading() //在标题栏中显示加载
       this.loadmyorders()
@@ -83,32 +58,30 @@ Page({
     }
   },
   loadmyorders: function () {
-    //if (ifLoadMore) {
-    console.log('load loadmyorders')
-    console.log('进入时  isHideLoadMore=' + this.data.isHideLoadMore)
-    //console.log('page=' + this.data.page)
+  
     this.setData({
       isHideLoadMore: false
     })
     let orderList = [];
     var that = this;
-    let url = 'getmyorderList.php';
+    let url = 'GetmyorderList/index/';
     let data = {
       page: this.data.page,
       uid: this.data.uid,
     }
     http.postReq(url, data, function (res) {
-      console.log(res)
+    
       orderList = that.data.orderList
       //加载更多
-      if (res.result.length > 0) {
+    
+      if (res.result.data.length > 0) {
+       
         var page = that.data.page + 1;
-        for (var i = 0; i < res.result.length; i++) {
-          orderList.push(res.result[i]);
+        for (var i = 0; i < res.result.data.length; i++) {
+          orderList.push(res.result.data[i]);
         }
 
-        that.setData({
-          // loadingCount: orderList.length,
+        that.setData({         
           orderList: orderList,
           page: page
         });
@@ -132,7 +105,7 @@ Page({
       isHideLoadMore: true
     })
    
-    console.log('结束时 isHideLoadMore=' + this.data.isHideLoadMore)
+   
 
   },//end of loadmyorders
 

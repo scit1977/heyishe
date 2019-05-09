@@ -33,7 +33,7 @@ Page({
       app.globalData.userInfo = e.detail.userInfo;
       console.log(' e.detail.userInfo.nickName=' + e.detail.userInfo.nickName)
       var that = this;
-      let url = 'wxadd_user.php';
+      let url = 'Wxadduser/index/';
       let data = {
         uid: app.globalData.openid,
         nickName: e.detail.userInfo.nickName,
@@ -96,12 +96,12 @@ Page({
   //获取用户信息接口
   queryUsreInfo: function () {
     var that = this;
-    let url = 'getuserInfo.php';
+    let url = 'getuserInfo/index/';
     let data = {
       openid: app.globalData.openid
     }
     http.postReq(url, data, function (res) {
-      console.log('getuserInfo.php')
+      console.log('getuserInfo/index/')
       console.log(res)
       app.globalData.userInfo = res;
 

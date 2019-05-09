@@ -1,5 +1,6 @@
 // page/component/orders/orders.js
 const app = getApp();
+const http = require('../../utils/http.js');
 Page({
   data: {
     address: {},
@@ -33,7 +34,7 @@ Page({
       url:url,
     })
     var arr = wx.getStorageSync('orders') || [];
-    console.info("orders.js 缓存数据：" + arr[0]['title']);
+    //console.info("orders.js 缓存数据：" + arr[0]['title']);
     // 有数据的话，就遍历数据，计算总金额 和 总数量  
     if (arr.length > 0) {
       // 更新数据  
@@ -47,53 +48,32 @@ Page({
     //获取用户地址信息
     this.get_address_data();
    
-   /* wx.getStorage({
-      key: 'address',
-      success(res) {
-        self.setData({
-          address: res.data,
-          hasAddress: true
-        })
-      }
-    })*/
+  
   },
   get_address_data() {
-    var self = this;
-    wx.showLoading({
-      title: '加载中...'
-    });
-    wx.request({
-      url: app.globalData.urlPath + 'getaddress.php',
-      method: "POST",
-      data: {
-        uid: this.data.uid,
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {  //后端返回的数据
-        var data = res.data;
-        // console.log(data.result);
-        self.setData({
-          address: data.result
+    var that = this;
+    let url = 'getaddress/index';
+    let data = {
+      uid: this.data.uid,
+    }
+    http.postReq(url, data, function (res) {
+      //console.log('res===')
+      //console.log(res)
+      that.setData({
+        address: res.result
+      })
+      // console.log(data.result);
+      if (that.data.address.name != null && that.data.address.name != '' && that.data.address.name != undefined) {
+       
+        that.setData({        
+          hasAddress: true
         })
-        console.log('this.data.address.name' + self.data.address.name)
-        //console.log('this.data.address.name.length' + this.data.address.name.length)
-        if (self.data.address.name != null && self.data.address.name != '' && self.data.address.name != undefined) {
-          //console.log('姓名不等于空')
-          //if (self.data.address.name.length > 1) {
-            self.setData({
-              //address: res.data,
-              hasAddress: true
-            })
-          //}
+       
 
-        }
-      },
-      complete: function () {
-        wx.hideLoading();
       }
-    });
+    })
+
+  
   },
   /**
    * 计算总价
@@ -132,15 +112,68 @@ Page({
     var orderId = this.data.orderId;
     var orders = this.data.orders;
     var address = this.data.address;
-    console.log(orders);
+    //console.log(orders);
     wx.login({
       success: res => {
 
         //code 用于获取openID的条件之一
         var code = res.code;
+        var that = this;
+        let url = 'wxpayindex/index/';
+        let data = {
+          total_fee: total_fee,
+          code: code,
+          orderId: orderId,
+          orders: JSON.stringify(orders),
+          address: JSON.stringify(address)
+        }
+        http.postReq(url, data, function (res) {
+          console.log('res===')
+          console.log(res)
+
+          // console.log(data.result);
+          var data = res;
+          console.log('data========');
+          console.log(data);
+          console.log(data["timeStamp"]);
+          //console.log(data["nonceStr"]);
+          wx.requestPayment({
+            timeStamp: data['timeStamp'],
+            nonceStr: data['nonceStr'],
+            package: data['package'],
+            signType: data['signType'],
+            paySign: data['paySign'],
+            success: function (res) {
+              wx.showModal({
+                title: '支付成功',
+                content: '',
+              })
+              //清除购物车数据和订单数据
+              let arr = [];
+              wx.setStorageSync('cart', arr)
+              wx.setStorageSync('orders', arr)
+              //跳转到我的订单
+              if (that.data.url == 'pages/charge/charge') {
+                wx.reLaunch({
+                  url: '/pages/mycharge/mycharge',
+                })
+              } else {
+                wx.reLaunch({
+                  url: '/pages/myorder/myorder',
+                })
+              }
+
+            },
+            fail: function (res) {
+              
+              console.log(res);
+            }
+          })
+        }) 
         //console.log('orders.js code=' + code);
+        /*
         wx.request({
-          url: app.globalData.urlPath +'wxpay/wxpayindex.php',        
+          url: app.globalData.urlPath +'wxpayindex/index/',        
           method: "POST",
           data: {
             total_fee: total_fee,
@@ -153,9 +186,10 @@ Page({
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
           success: function (res) {  //后端返回的数据
-            var data = res.data;
-            //console.log(data);
-            //console.log(data["timeStamp"]);
+            var data = res;
+            console.log('data========');
+            console.log(data);
+            console.log(data["timeStamp"]);
             //console.log(data["nonceStr"]);
             wx.requestPayment({
               timeStamp: data['timeStamp'],
@@ -189,7 +223,8 @@ Page({
               }
             })
           }
-        });
+        });//end of request 
+        */
 
 
       }
