@@ -63,7 +63,7 @@ Page({
     })
     let orderList = [];
     var that = this;
-    let url = 'Getmychargelist/index/';
+    let url = 'Getmychargelist/';
     let data = {
       page: this.data.page,
       uid: this.data.uid,

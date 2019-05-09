@@ -27,7 +27,7 @@ Page({
     //调取商品信息
     let items = [];
     var that = this;
-    let url = 'getchargelist';
+    let url = 'getchargelist/';
     let data = {
       type: 1,
       page: 1

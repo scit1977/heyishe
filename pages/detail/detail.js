@@ -90,7 +90,7 @@ Page({
       }
     })*/
     var that = this;
-    let url = 'addGoodsClick/index/';
+    let url = 'addGoodsClick/';
     let data = {
       goodsId: goodsId,
       
@@ -103,9 +103,15 @@ Page({
   },
   goodsInfoShow: function (success) {
     var that = this;
-    http.getReq('getGoodsInfo/index/id/' + goodsId, function (data) {
-      var goodsItem = data.result;
-      var imgs = data.imgs;
+    let url = 'getGoodsInfo/';
+    let data = {
+      id: goodsId,
+
+    }
+    http.postReq(url, data, function (res) {
+     // data=res.reslt
+      var goodsItem = res.result;
+      var imgs = res.imgs;
      // console.log('goodsItem=')
      // console.log(goodsItem)
       var WxParse = require('../../wxParse/wxParse.js');

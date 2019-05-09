@@ -53,13 +53,12 @@ Page({
   get_data() {
    
     var that = this;
-    let url = 'getbalance/index';
+    let url = 'getbalance/';
     let data = {
       uid: this.data.uid,
     }
     http.postReq(url, data, function (res) {
-      console.log('res===')
-      console.log(res)
+     
      
       // console.log(data.result);
       if (res.result.name == '') {
@@ -90,56 +89,7 @@ Page({
       }
     })
 
-     /*
-    wx.showLoading({
-      title: '加载中...'
-    });
-    wx.request({
-      url: app.globalData.urlPath + 'getbalance.php',
-      method: "POST",
-      data: {
-        uid: this.data.uid,
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {  //后端返回的数据
-        var data = res.data;
-        // console.log(data.result);
-        if (data.result.name==''){
-        //没有名字信息，跳转到地址页面让用户填写信息
-          wx.showModal({
-            title: '温馨提示',
-            content: '亲，请先完善您的个人信息哦。',
-            text: 'center',
-            complete() {
-              wx.navigateTo({
-                url: '/pages/address/address'
-              })
-            }
-          })
-        }else{
-          wx.setStorage({
-            key: 'address',
-            data: data.result,
-            success() {
-             // wx.navigateBack();
-              console.log('ok' + data.result)
-            }
-          })
-          self.setData({
-            balance: data.result.balance,
-            tname: data.result.name
-          })
-        }
-         
-      
-       
-      },
-      complete: function () {
-        wx.hideLoading();
-      }
-    });*/
+    
   },
   myAddress: function (e) {
     wx.navigateTo({ url: '../addressList/addressList' });

@@ -28,15 +28,10 @@ Page({
 
   },
   load_cardinfo: function () {
-    //if (ifLoadMore) {
-    //console.log('load loadnews')   
-   // wx.showLoading({
-     // title: '加载中...'
-   // });
-    //调取卡片信息
+  
     
     var that = this;
-    let url = 'Getcardinfo/index/';
+    let url = 'Getcardinfo/';
     let data = {
       cardid: that.data.cardnum
     }
@@ -74,7 +69,7 @@ Page({
   },
   getcard: function () {
     var that = this;
-    let url = 'Wxcardinit/index/';
+    let url = 'Wxcardinit/';
     let data = {
       cardid: that.data.cardId
     }

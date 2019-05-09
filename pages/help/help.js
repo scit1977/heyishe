@@ -19,9 +19,7 @@ Page({
 
       success: function (res) {
         //CustomBar
-        console.log('res.windowHeight' + res.windowHeight);
-        console.log('app.globalData.StatusBar' + app.globalData.StatusBar);
-        console.log('app.globalData.CustomBar' + app.globalData.CustomBar);
+      
         var height = res.windowHeight - app.globalData.CustomBar- 40;
         console.log(height);
         that.setData({

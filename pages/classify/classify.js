@@ -44,20 +44,9 @@ Page({
   },
   classifyShow: function (success) {
     var that = this;
-   /* ajax.request({
-      method: 'GET',
-      url: 'getGoodClassList.php',
-      success: data => {
-        console.log(data)
-        that.setData({
-          classifyItems: data.result
-        })
-        console.log(data.result)
-      }
-    })*/
+       
     http.getReq("getGoodClassList/", function (res) {
-      console.log("banner==")
-      console.log(res)
+     
       that.setData({
         classifyItems: res.result
       })

@@ -96,7 +96,7 @@ Page({
     var sessionId = wx.getStorageSync('sessionId');
     //console.log('sessionId=' + sessionId)
     wx.request({
-      url: app.globalData.urlPath + 'Sendsmsdo/index/',
+      url: app.globalData.urlPath + 'Sendsmsdo/',
       method: "POST",
       data: {
         phoneNum: phoneNum
@@ -123,12 +123,7 @@ Page({
             showCancel: false
           });
         
-         /* wx.showToast({
-            title: data.message,
-            icon: 'warn',
-            image: '../../images/fail.png',
-            duration: 2000
-          })*/
+        
         }
        
       }

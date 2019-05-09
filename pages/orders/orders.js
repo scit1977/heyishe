@@ -52,7 +52,7 @@ Page({
   },
   get_address_data() {
     var that = this;
-    let url = 'getaddress/index';
+    let url = 'getaddress/';
     let data = {
       uid: this.data.uid,
     }

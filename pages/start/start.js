@@ -15,7 +15,7 @@ Page({
   onLoad: function() {
     var that = this
     wx.setNavigationBarTitle({
-      title: wx.getStorageSync('mallName')
+      title: '和一舍'
     })
   },
   onShow: function() {
