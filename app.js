@@ -22,11 +22,11 @@ App({
         //适配全面屏底部距离
         if (CustomBar > 75) {
           this.globalData.tabbar_bottom = "y"
-        }
-       // console.log('custom=' + custom.top)
-        //console.log('CustomBar=' + CustomBar)
-        //console.log('tabbar_bottom=' + this.globalData.tabbar_bottom)
+        }       
 
+      },
+      fail:e=>{
+        this.globalData.CustomBar =60
       }
     })
     // 登录

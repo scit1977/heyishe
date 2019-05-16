@@ -29,6 +29,24 @@ Page({
     }
   },
   onReady: function() {
+    wx.getSystemInfo({
+      success: e => {
+        app.globalData.StatusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        app.globalData.Custom = custom;
+        app.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+        let CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+
+        //适配全面屏底部距离
+        if (CustomBar > 75) {
+          app.globalData.tabbar_bottom = "y"
+        }
+        // console.log('custom=' + custom.top)
+        console.log('CustomBar=' + CustomBar)
+        //console.log('tabbar_bottom=' + this.globalData.tabbar_bottom)
+
+      }
+    })
     var that = this;
     setTimeout(function() {
       that.setData({
