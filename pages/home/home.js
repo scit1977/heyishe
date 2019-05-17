@@ -9,7 +9,7 @@ Page({
   data: {
     CustomBar: app.globalData.CustomBar,
     timer: '',//定时器名字
-    countDownNum: '8',//倒计时初始值
+    countDownNum: '5',//倒计时初始值
     isRuleTrue:true,
     imgUrls: [],
     ad_img:'',
@@ -25,7 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('app.globalData.CustomBar=' + app.globalData.CustomBar)
+   // console.log('home app.globalData.CustomBar=' + app.globalData.CustomBar)
     this.loadnews()
   },
   //关闭规则提示

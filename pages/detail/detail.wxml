@@ -32,7 +32,7 @@
 <view class="cu-bar bg-white margin-top solid-bottom">
     <view class='action'>
         <text class='icon-title text-red'></text>
-        <text>服务详情</text>
+        <text>详情:</text>
     </view>
 </view>
 <view class="bg-white padding cauni-details-box">

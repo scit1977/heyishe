@@ -36,6 +36,11 @@ Component({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom
   },
+  ready: function () { 
+   // console.log(' cu app.globalData.CustomBar=' + app.globalData.CustomBar)
+   // console.log(' cu app.globalData.Custom=' + app.globalData.Custom)
+   // console.log(' cu app.globalData.StatusBar=' + app.globalData.StatusBar)
+  },
   /**
    * 组件的方法列表
    */

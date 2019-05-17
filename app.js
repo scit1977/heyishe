@@ -5,12 +5,13 @@ App({
     urlPath: 'https://t.heyishe.cn/index.php/wx/',
     openid: '',
     StatusBar:'',
-    CustomBar:'60',
+    CustomBar:'',
     tabbar_bottom:''
   },
   onLaunch: function () {
     // 展示本地存储能力   
-    var that=this;   
+    var that=this;
+    //获取屏幕设备属性   
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -18,17 +19,17 @@ App({
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
         let CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-       
+
         //适配全面屏底部距离
         if (CustomBar > 75) {
           this.globalData.tabbar_bottom = "y"
-        }       
-
+        }
+        console.log(' app.globalData.CustomBar=' + this.globalData.CustomBar)
       },
-      fail:e=>{
-        this.globalData.CustomBar =60
+      fail: e => {
+        this.globalData.CustomBar = 64
       }
-    })
+    })     
     // 登录
     wx.login({
       success: res => {

@@ -1,6 +1,6 @@
-const api ='https://t.heyishe.cn/index.php/wx/'; //'https://wx.heyishe.cn/wxshop/';
+const api ='https://t.heyishe.cn/wx/'; //'https://wx.heyishe.cn/wxshop/';
 
-const rootDocment ='https://t.heyishe.cn/index.php/wx/';// 'https://wx.heyishe.cn/wxshop/';
+const rootDocment ='https://t.heyishe.cn/wx/';// 'https://wx.heyishe.cn/wxshop/';
 var header = {
   'Accept': 'application/json',
   'content-type': 'application/x-www-form-urlencoded',
@@ -10,8 +10,8 @@ function getReq(url, cb) {
   wx.showLoading({
     title: '加载中',
   })
-  console.log("header=="),
-    console.log(header)
+    //console.log("header=="),
+    //console.log(header)
   wx.request({
     url: rootDocment + url,
     method: 'get',
@@ -36,8 +36,8 @@ function postReq(url, data, cb) {
   wx.showLoading({
     title: '加载中',
   })
-  console.log("header=="),
-    console.log(header),
+   // console.log("header=="),
+   // console.log(header),
     wx.request({
       url: rootDocment + url,
       header: header,

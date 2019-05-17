@@ -2,7 +2,7 @@
  <import src="../../wxParse/wxParse.wxml"/>
   <cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
  
-  <view slot="content">首页</view>
+  <view slot="content">和一舍</view>
 </cu-custom>
 <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500">
   <swiper-item wx:for="{{imgUrls}}" wx:key>
