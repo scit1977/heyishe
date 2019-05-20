@@ -4,8 +4,8 @@ App({
     userInfo: null,
     urlPath: 'https://t.heyishe.cn/index.php/wx/',
     openid: '',
-    StatusBar:'',
-    CustomBar:'',
+    StatusBar:'20',
+    CustomBar:'65',
     tabbar_bottom:''
   },
   onLaunch: function () {
@@ -24,10 +24,12 @@ App({
         if (CustomBar > 75) {
           this.globalData.tabbar_bottom = "y"
         }
+        console.log(' app.globalData.StatusBar=' + this.globalData.StatusBar)
         console.log(' app.globalData.CustomBar=' + this.globalData.CustomBar)
       },
       fail: e => {
-        this.globalData.CustomBar = 64
+        this.globalData.StatusBar = 22
+        this.globalData.CustomBar = 66
       }
     })     
     // 登录
@@ -48,7 +50,7 @@ App({
           },
           success: function (res) {  //后端返回的数据
             var data = res.data;
-            console.log(data);
+            //console.log(data);
            // console.log(data["uid"]);
             that.globalData.openid = data["uid"]
             wx.setStorageSync('openid', data["uid"]) 

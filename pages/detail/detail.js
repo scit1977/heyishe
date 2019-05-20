@@ -50,8 +50,8 @@ Page({
     // 最后，把购物车数据，存放入缓存  
     var arr=[];
     var goods=this.data.goods;
-    console.log('立即商品信息')
-    console.log(goods)
+    //console.log('立即商品信息')
+    //console.log(goods)
     arr.push(goods);
     try {
       wx.setStorageSync('orders', arr)
@@ -80,7 +80,7 @@ Page({
     that.goodsClick(goodsId);
   },
   goodsClick(goodsId) {
-    console.log('增加商品用户点击数量');
+    //console.log('增加商品用户点击数量');
     /*var that = this;
     ajax.request({
       method: 'GET',
@@ -96,7 +96,7 @@ Page({
       
     }
     http.postReq(url, data, function (res) {
-      console.log(res)
+     // console.log(res)
      
 
     })

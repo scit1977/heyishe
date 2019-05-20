@@ -32,7 +32,7 @@ page{
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding-bottom: 450rpx;
+  padding-bottom: 40%;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(244,244,244,0)), color-stop(0.1, #f4f4f4), to(#f4f4f4));
   opacity: 0;
   transform: translate3d(0,100%,0);
@@ -56,7 +56,7 @@ page{
 @keyframes rise{
   0% {opacity: 0;transform: translate3d(0,100%,0);}
   50% {opacity: 1;}
-  100% {opacity: 1;transform: translate3d(0,450rpx,0);}
+  100% {opacity: 1;transform: translate3d(0,40%,0);}
 }
 .title{
   position: absolute;
@@ -74,7 +74,7 @@ page{
   top:100rpx;
   left: 50%;
   width: 600rpx;
-  height: 200rpx;
+  height: 150rpx;
   margin-left: -300rpx;
   opacity: 0;
   animation: show 2.5s cubic-bezier(0.19, 1, 0.22, 1) .5s forwards;
@@ -115,38 +115,7 @@ page{
   84% {transform: translate3d(0,15rpx,0) rotate(15deg); }
   100% {transform: translate3d(0,20rpx,0) rotate(-15deg); }
 }
-.gif-wave{
-  position: absolute;
-  width: 100%;
-  bottom: -100;
-  left: 0;
-  z-index: 99;
-  mix-blend-mode: screen;  
-  height: 100rpx;   
-}
 
-.wave {
-  position: absolute;
-  z-index: 3;
-  right: 0;
-  bottom: 0;
-  opacity: 0.725;
-  height: 260rpx;
-  width: 2250rpx;
-  animation: wave 10s linear infinite;
-}
-.wave-bg {
-  z-index: 1;
-  animation: wave-bg 10.25s linear infinite;
-}
-@keyframes wave{
-  from {transform: translate3d(125rpx,0,0);}
-  to {transform: translate3d(1125rpx,0,0);}
-}
-@keyframes wave-bg{
-  from {transform: translate3d(375rpx,0,0);}
-  to {transform: translate3d(1375rpx,0,0);}
-}
 
 .bd {
   position: relative;
@@ -170,7 +139,7 @@ page{
   color: #fff;
   text-align: center;
   border-radius: 100rpx;
-  margin: 60% 20%;
+  margin: 40% 20%;
 }
 .confirm-btn:active {
   opacity: .8;

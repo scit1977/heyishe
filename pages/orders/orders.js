@@ -29,7 +29,7 @@ Page({
     var currentPage = pages[pages.length - 2] //获取当前页面的对象
 
     var url = currentPage.route //当前页面url
-    console.log(url)
+    //console.log(url)
     this.setData({
       url:url,
     })
@@ -128,14 +128,14 @@ Page({
           address: JSON.stringify(address)
         }
         http.postReq(url, data, function (res) {
-          console.log('res===')
-          console.log(res)
+         // console.log('res===')
+         // console.log(res)
 
           // console.log(data.result);
           var data = res;
-          console.log('data========');
-          console.log(data);
-          console.log(data["timeStamp"]);
+         // console.log('data========');
+         // console.log(data);
+         // console.log(data["timeStamp"]);
           //console.log(data["nonceStr"]);
           wx.requestPayment({
             timeStamp: data['timeStamp'],
@@ -170,61 +170,7 @@ Page({
             }
           })
         }) 
-        //console.log('orders.js code=' + code);
-        /*
-        wx.request({
-          url: app.globalData.urlPath +'wxpayindex/index/',        
-          method: "POST",
-          data: {
-            total_fee: total_fee,
-            code: code,
-            orderId: orderId,
-            orders: JSON.stringify(orders),            
-            address: JSON.stringify(address)
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          success: function (res) {  //后端返回的数据
-            var data = res;
-            console.log('data========');
-            console.log(data);
-            console.log(data["timeStamp"]);
-            //console.log(data["nonceStr"]);
-            wx.requestPayment({
-              timeStamp: data['timeStamp'],
-              nonceStr: data['nonceStr'],
-              package: data['package'],
-              signType: data['signType'],
-              paySign: data['paySign'],
-              success: function (res) {
-                wx.showModal({
-                  title: '支付成功',
-                  content: '',
-                })
-                //清除购物车数据和订单数据
-                let arr=[];
-                wx.setStorageSync('cart', arr)
-                wx.setStorageSync('orders', arr)
-                //跳转到我的订单
-                if (that.data.url =='pages/charge/charge'){
-                  wx.reLaunch({
-                    url: '/pages/mycharge/mycharge',
-                  })
-                }else{
-                  wx.reLaunch({
-                    url: '/pages/myorder/myorder',
-                  })
-                }
-              
-              },
-              fail: function (res) {
-                console.log(res);
-              }
-            })
-          }
-        });//end of request 
-        */
+      
 
 
       }
