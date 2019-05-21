@@ -1,4 +1,4 @@
-// pages/detail/detail.js
+// 参考 https://blog.csdn.net/qq_31763107/article/details/88652741
 const http = require('../../utils/http.js');
 const app = getApp();
 var imgUrls = [];

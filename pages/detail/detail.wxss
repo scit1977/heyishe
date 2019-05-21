@@ -49,6 +49,7 @@
 }
 .canui-tabbar-bottom{
   padding-bottom:20rpx;
+  
   min-height:150rpx;
 }
 /* sku选择 */

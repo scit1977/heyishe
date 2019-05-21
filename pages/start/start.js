@@ -20,7 +20,7 @@ Page({
   },
   onShow: function() {
     let that = this
-   
+    
     if (app.globalData.userInfo) {
       let userInfo = app.globalData.userInfo// wx.getStorageSync('userInfo')
       that.setData({

@@ -1,35 +1,32 @@
 //app.js
 App({
-  globalData: {
-    userInfo: null,
-    urlPath: 'https://t.heyishe.cn/index.php/wx/',
-    openid: '',
-    StatusBar:'20',
-    CustomBar:'65',
-    tabbar_bottom:''
-  },
+ 
   onLaunch: function () {
     // 展示本地存储能力   
     var that=this;
     //获取屏幕设备属性   
     wx.getSystemInfo({
       success: e => {
-        this.globalData.StatusBar = e.statusBarHeight;
+       
+        that.globalData.StatusBar = e.statusBarHeight;
         let custom = wx.getMenuButtonBoundingClientRect();
-        this.globalData.Custom = custom;
-        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+        that.globalData.Custom = custom;
         let CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-
+        if (CustomBar < 0){
+          CustomBar=80
+        }
+        that.globalData.CustomBar = CustomBar;
+        
         //适配全面屏底部距离
         if (CustomBar > 75) {
-          this.globalData.tabbar_bottom = "y"
+          that.globalData.tabbar_bottom = "y"
         }
-        console.log(' app.globalData.StatusBar=' + this.globalData.StatusBar)
-        console.log(' app.globalData.CustomBar=' + this.globalData.CustomBar)
+       
       },
       fail: e => {
-        this.globalData.StatusBar = 22
-        this.globalData.CustomBar = 66
+        that.globalData.StatusBar = 22
+        that.globalData.CustomBar = 66
+        that.globalData=false
       }
     })     
     // 登录
@@ -103,6 +100,16 @@ App({
         }
       }
     })
+  },
+  globalData: {
+    userInfo: null,
+    urlPath: 'https://t.heyishe.cn/wx/',
+    openid: '',
+    Custom:null,
+    StatusBar: '20',
+    CustomBar: '65',
+    tabbar_bottom: '',
+    state: true,
   }
   
 })

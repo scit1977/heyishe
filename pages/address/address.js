@@ -218,7 +218,7 @@ Page({
       uid: this.data.uid
     }
     http.postReq(url, data, function (res) {
-      console.log(res)      
+      //console.log(res)      
       that.setData({
         address: res.result.address,
         phoneNum: res.result.tel,

@@ -36,6 +36,11 @@ Component({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom
   },
+  show:function(){
+    this.setData({
+      StatusBar: phoneNum
+    })
+  },
   ready: function () { 
    // console.log(' cu app.globalData.CustomBar=' + app.globalData.CustomBar)
    // console.log(' cu app.globalData.Custom=' + app.globalData.Custom)

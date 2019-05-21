@@ -27,11 +27,7 @@ Page({
       totalMoney: 0
     });
     for (i = 0; i < arr.length; i++) {
-      console.log(i)
-      console.log(arr[i].imgUrl)
-      console.log(arr[i].title)
-      console.log(arr[i].price);
-      console.log(arr[i].count);
+     
     }
     // 有数据的话，就遍历数据，计算总金额 和 总数量  
     if (arr.length > 0) {
@@ -41,7 +37,7 @@ Page({
         iscart: true,
         hidden: false
       });
-      console.info("缓存数据：" + this.data.carts);
+      //console.info("缓存数据：" + this.data.carts);
     } else {
       this.setData({
         iscart: false,
