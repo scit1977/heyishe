@@ -1,14 +1,14 @@
 <!--pages/charge/charge.wxml-->
 <cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}"><view slot="content">优惠充值</view></cu-custom>
 <view class="page">
-    <view >
-      <image class="img" src="https://wx.heyishe.cn/img/charge.jpg"  mode="widthFix" width="750rpx" />
+    <view class="top">
+      <image  src="https://wx.heyishe.cn/img/charge.jpg"  mode="widthFix"  />
     </view>
     
         <view class="free" >
-            <view class="freepic" >
-              <image  src="{{ad_img}}" mode="widthFix" bindtap="tofree"  width="750rpx"/>
-            </view>
+           
+              <image  src="{{ad_img}}" mode="widthFix" bindtap="tofree"  />
+            
         </view>
     
     <view class='radios'>

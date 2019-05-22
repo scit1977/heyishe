@@ -4,7 +4,7 @@
  
   <view slot="content">和一舍</view>
 </cu-custom>
-<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500">
+<swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500">
   <swiper-item wx:for="{{imgUrls}}" wx:key>
     <image src="{{item}}" mode="aspectFill" ></image>
    

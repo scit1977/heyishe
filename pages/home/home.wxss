@@ -11,7 +11,7 @@ page{
 
 .contents{
   
-  width: 96%;  
+  width: 100%;  
   justify-content: center;
   font-size: 12pt;
   color: #353535;
