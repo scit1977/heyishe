@@ -206,8 +206,7 @@ Page({
     }
   }, 
   onLoad() {
-    this.data.uid = wx.getStorageSync('openid')
-    //console.log('this.uid=' + this.data.uid)   
+    this.data.uid = wx.getStorageSync('openid')    
     this.get_data()
   
   },
@@ -224,51 +223,16 @@ Page({
         phoneNum: res.result.tel,
         name: res.result.name,
       })
-      wx.setStorageSync('sessionId', res.sessionid)
-     // console.log('address=' + that.data.address)
+      wx.setStorageSync('sessionId', res.sessionid)    
+     if (res.result.tel!=null){     
       if (res.result.tel.length == 11) {
         that.showSendMsg()
         that.activeButton()
        
       }
+     }
     })  
-    //获取原有数据
-    /*
-    var self=this;
    
-    wx.request({
-      url: app.globalData.urlPath +'getaddress.php',     
-      method: "POST",
-      data: {       
-        uid: this.data.uid,
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (res) {  //后端返回的数据
-        var data = res.data;       
-        console.log(data.result);
-        console.log(data.result.tel);
-        self.setData({
-          address: data.result.address,
-          phoneNum: data.result.tel,
-          name: data.result.name,          
-        })
-        wx.setStorageSync('sessionId', res.header['Set-Cookie'])
-        console.log('address=' + self.data.address)
-         if(data.result.tel.length==11){
-           self.showSendMsg()
-           //self.hideSendMsg()
-           //self.setData({
-            // send: true
-          // })
-         }
-       
-      },
-      complete: function () {
-        wx.hideLoading();
-      }
-    });*/
    
   },
   input_data(value){
@@ -287,6 +251,11 @@ Page({
         address: value.address,
         code:value.code,
         uid:this.data.uid,
+        nickName: app.globalData.userInfo.nickName,
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        province: app.globalData.userInfo.province,
+        city: app.globalData.userInfo.city,
+        gender: app.globalData.userInfo.gender,
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
@@ -329,8 +298,8 @@ Page({
     });
   },
   formSubmit(e) {
-    console.log('formSubmit 函数')
-    console.log(e.detail.value)
+   // console.log('formSubmit 函数')
+    //console.log(e.detail.value)
     const value = e.detail.value;
     if (!value.tel.match(/^1[3-9][0-9]\d{8}$/)) {
       
@@ -341,7 +310,7 @@ Page({
       });
       return false
     }
-    console.log('value.code=' + value.code)
+   // console.log('value.code=' + value.code)
     //console.log('this.data.backcode=' + this.data.backcode)
    
     if (value.name && value.tel && value.address&&value.code) {

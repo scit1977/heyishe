@@ -33,7 +33,7 @@ Page({
       page: 1
     }
     http.postReq(url, data, function (res) {
-      console.log(res)
+     // console.log(res)
       that.setData({
         // loadingCount: orderList.length,
         items: res.result,

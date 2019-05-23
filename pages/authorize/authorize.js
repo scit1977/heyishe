@@ -51,29 +51,7 @@ Page({
 
       })
      
-     /* wx.request({
-        url: app.globalData.urlPath + 'wxadd_user.php',
-        data: {
-          uid: app.globalData.openid,
-          nickName: e.detail.userInfo.nickName,
-          avatarUrl: e.detail.userInfo.avatarUrl,
-          province: e.detail.userInfo.province,
-          city: e.detail.userInfo.city,
-          gender: e.detail.userInfo.gender,
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded' // 默认值
-        },
-        success: function (res) {
-          //从数据库获取用户信息
-          //that.queryUsreInfo();
-          app.globalData.userInfo = e.detail.userInfo
-          console.log(res.data)
-          console.log("插入小程序登录用户信息成功！");
-          console.log(app.globalData.userInfo)
-        }
-      });*/
+    
       //授权成功后，跳转进入小程序首页
       wx.switchTab({
         url: '/pages/personal/personal'

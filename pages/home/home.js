@@ -100,9 +100,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(' app.globalData.StatusBar=' + app.globalData.StatusBar)
-    console.log(' app.globalData.CustomBar=' + app.globalData.CustomBar)
-    console.log(' app.globalData.state=' + app.globalData.state)
+    //console.log(' app.globalData.StatusBar=' + app.globalData.StatusBar)
+    //console.log(' app.globalData.CustomBar=' + app.globalData.CustomBar)
+    //console.log(' app.globalData.state=' + app.globalData.state)
    
    
     this.loadnews()
