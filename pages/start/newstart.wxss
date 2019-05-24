@@ -1,0 +1,82 @@
+/* pages/start/newstart.wxss */
+/*container内容充满整个屏幕（高度、宽度100%），并使内容水平和竖直都居中*/
+.container { 
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  background: #69C3AA; 
+} 
+/*开场loading动画*/
+.remind-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40%;
+}
+.remind-img {
+  width: 250rpx;
+  height: 250rpx;
+  padding-bottom: 25rpx;
+}
+.topimg{
+  display: flex;
+  position: absolute;
+  top:50rpx;  
+  width: 750rpx;
+ 
+}
+.topimg image{
+  width: 100%;
+}
+.content{
+  display: flex;
+  position: absolute;
+  top:320rpx;
+ 
+  width: 750rpx;
+
+}
+.content image{
+  width: 160rpx;
+  height: 160rpx;
+   border-radius: 160rpx;
+   left: 50%;
+ 
+
+  margin-left: -80rpx;
+}
+
+.centerimg{
+  display: flex;
+  position: absolute;
+  top:580rpx;  
+  width: 750rpx;
+ 
+}
+.centerimg image{
+  width: 100%;
+}
+.bd{
+  display: flex;
+  position: absolute;
+  bottom:200rpx;  
+  width: 750rpx;
+  justify-content: center;/*水平居中*/
+ 
+}
+.copyright {
+  font-size: 28rpx;
+  color: #333;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+<!--pages/start/newstart.wxml-->
+<view class="container">
+   <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="../../images/loading.gif"></image>
+  </view>
+  <block wx:else>
+  <view class="topimg" >
+  <image mode="widthFix"  class="animation-scale-down" style="animation-delay: 1s;" src="../../images/title.png"></image>
+  </view>
+  <view class="content">     
+        <image  class="animation-slide-bottom" style="animation-delay: 1.2s;"  src="{{userInfo.avatarUrl}}"></image> 
+      </view>
+        <view class="centerimg" >
+  <image mode="widthFix"  class="animation-slide-top" style="animation-delay: 1.3s;" src="../../images/confirm-word.png"></image>
+  </view>
+      <view class="bd">
+        
+        <view class="cu-btn  round bg-green animation-scale-up margin-sm basis-sm shadow button-hover" style="animation-delay: 1.5s;"  bindtap='goToIndex'>
+          <text >进入和一舍</text>
+        </view>
+        <text class="copyright">和一舍@2019</text>
+      </view>
+    
+  </block>
+</view>

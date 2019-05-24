@@ -16,13 +16,14 @@ page{
 }
 
 .free{
- 
+ display: flex;
   width:750rpx;
   height:240rpx; 
   margin-top:50rpx;/*向上的间距*/
+    justify-content: center;/*水平居中*/
   }
 .free image{
-  width: 100%;
+  width: 90%;
 }
 
 .radios{

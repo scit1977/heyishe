@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/start/start",
+    "pages/start/newstart",   
     "pages/home/home",
     "pages/address/address",
     "pages/orders/orders",
