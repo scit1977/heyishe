@@ -1,11 +1,8 @@
-//login.js
-//获取应用实例
 var app = getApp();
 Page({
-  data: {
-    remind: '加载中',
-    angle: 0,
-    userInfo: {}
+  data: {   
+    avator:'/images/log100.jpg',
+    remind:'loading'    
   },
   goToIndex: function () {
     wx.switchTab({
@@ -20,12 +17,15 @@ Page({
   },
   onShow: function () {
     let that = this
-
+    //console.log(app.globalData.userInfo)
     if (app.globalData.userInfo) {
       let userInfo = app.globalData.userInfo// wx.getStorageSync('userInfo')
-      that.setData({
-        userInfo: userInfo
-      })
+      if (userInfo){
+        that.setData({
+          avator: userInfo.avatarUrl
+        })
+      }
+     
     }
   },
   onReady: function () {

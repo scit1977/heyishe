@@ -8,7 +8,7 @@
   <image mode="widthFix"  class="animation-scale-down" style="animation-delay: 1s;" src="../../images/title.png"></image>
   </view>
   <view class="content">     
-        <image  class="animation-slide-bottom" style="animation-delay: 1.2s;"  src="{{userInfo.avatarUrl}}"></image> 
+        <image  class="animation-slide-bottom " style="animation-delay: 1.2s;"  src="{{avator}}"></image> 
       </view>
         <view class="centerimg" >
   <image mode="widthFix"  class="animation-slide-top" style="animation-delay: 1.3s;" src="../../images/confirm-word.png"></image>
@@ -18,7 +18,9 @@
         <view class="cu-btn  round bg-green animation-scale-up margin-sm basis-sm shadow button-hover" style="animation-delay: 1.5s;"  bindtap='goToIndex'>
           <text >进入和一舍</text>
         </view>
+        <view class="animation-fade "  style="animation-delay: 1.5s;">
         <text class="copyright">和一舍@2019</text>
+        </view>
       </view>
     
   </block>

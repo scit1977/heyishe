@@ -37,8 +37,7 @@
 .content{
   display: flex;
   position: absolute;
-  top:320rpx;
- 
+  top:350rpx; 
   width: 750rpx;
 
 }
@@ -55,7 +54,7 @@
 .centerimg{
   display: flex;
   position: absolute;
-  top:580rpx;  
+  top:600rpx;  
   width: 750rpx;
  
 }
@@ -65,7 +64,7 @@
 .bd{
   display: flex;
   position: absolute;
-  bottom:200rpx;  
+  bottom:220rpx;  
   width: 750rpx;
   justify-content: center;/*水平居中*/
  
