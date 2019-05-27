@@ -46,9 +46,8 @@
   height: 160rpx;
    border-radius: 160rpx;
    left: 50%;
- 
-
   margin-left: -80rpx;
+  
 }
 
 .centerimg{
@@ -56,10 +55,12 @@
   position: absolute;
   top:600rpx;  
   width: 750rpx;
+  
  
 }
 .centerimg image{
   width: 100%;
+  
 }
 .bd{
   display: flex;

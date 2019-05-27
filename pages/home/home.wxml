@@ -13,12 +13,14 @@
   <view class="contents">      
        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
   </view> 
-  <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+ 
+  <view class="animation-fade ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}"  style="animation-delay: 1.2s;">
         <view class='ruleZhezhaoContent'>
             <view class='ruleZhezhaoText' >
               <image  src="{{ad_img}}" mode="widthFix" bindtap="tofree"  width="90%"/>
             </view>
             <image src='../../images/close.png' class='ruleHide' bindtap='hideRule'></image>
         </view>
-    </view>
+  </view>
+ 
 

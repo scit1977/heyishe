@@ -35,10 +35,10 @@ page{
     left: 0;
 }
 .ruleZhezhaoContent{
-    padding: 20rpx 0;
+    padding: 10rpx 0;
     width: 80%;
     background: #e1d2b1;
-    margin: 30% auto;
+    margin: 33% auto;
     border-radius: 20rpx;
     display: flex;
     flex-direction: column;
@@ -47,7 +47,7 @@ page{
     position: relative;
 }
 .ruleZhezhaoText{
-    width: 80%;
+    width: 90%;
     font-size: 30rpx;
     color: #856d5f;
     display: flex;

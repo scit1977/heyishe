@@ -15,7 +15,7 @@
   </view>
       <view class="bd">
         
-        <view class="cu-btn  round bg-green animation-scale-up margin-sm basis-sm shadow button-hover" style="animation-delay: 1.5s;"  bindtap='goToIndex'>
+        <view class="cu-btn  round bg-green lg animation-scale-up margin-sm basis-sm shadow button-hover" style="animation-delay: 1.5s;"  bindtap='goToIndex'>
           <text >进入和一舍</text>
         </view>
         <view class="animation-fade "  style="animation-delay: 1.5s;">
