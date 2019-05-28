@@ -17,12 +17,24 @@ Page({
   },
   onShow: function () {
     let that = this
-    //console.log(app.globalData.userInfo)
+   
     if (app.globalData.userInfo) {
       let userInfo = app.globalData.userInfo// wx.getStorageSync('userInfo')
       if (userInfo){
         that.setData({
           avator: userInfo.avatarUrl
+        })
+      }
+     
+    }else{
+      // console.log('page2');
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      // 给app.js 定义一个方法。
+      app.userInfoReadyCallback = res => {
+        that.setData({
+          avator: res.userInfo.avatarUrl
+          
         })
       }
      

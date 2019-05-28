@@ -14,7 +14,7 @@
        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
   </view> 
  
-  <view class="animation-fade ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}"  style="animation-delay: 1.2s;">
+  <view class="animation-fade ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}" >
         <view class='ruleZhezhaoContent'>
             <view class='ruleZhezhaoText' >
               <image  src="{{ad_img}}" mode="widthFix" bindtap="tofree"  width="90%"/>
