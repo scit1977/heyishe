@@ -74,18 +74,16 @@ Page({
       type: 1,
       page: 1
     }
-    http.postReq(url,  data,function (res) {
-    // console.log(res)
-     that.setData({
-        // loadingCount: orderList.length,
+   
+    http.postReq(url, data).then(function (res) {      
+     that.setData({       
         imgUrls: res.imgs,
-       ad_img: res.ad_img,
+        ad_img: res.ad_img,
         jianjie_txt: res.jianjie_txt
       });
       var WxParse = require('../../wxParse/wxParse.js');
       WxParse.wxParse('content', 'html', that.data.jianjie_txt, that, 25);
-    })
-   
+    })   
     this.countDown();
 
   },//end of loadmyorders

@@ -75,7 +75,8 @@ Page({
       page: this.data.page,
       uid: this.data.uid,
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+   // http.postReq(url, data, function (res) {
      
       orderList = that.data.orderList
       //加载更多

@@ -1,6 +1,5 @@
 // pages/classify/classify.js
 const http = require('../../utils/http.js');
-const utils = require('../../utils/util.js');
 Page({
 
   /**
@@ -28,7 +27,7 @@ Page({
     let id = e.target.dataset.id,
       index = parseInt(e.target.dataset.index);
     // 把点击到的某一项，设为当前index  
-    console.log('index='+index)
+    //console.log('index='+index)
     this.setData({
       curNav: id,
       curIndex: index
@@ -43,10 +42,11 @@ Page({
     that.classifyShow();
   },
   classifyShow: function (success) {
-    var that = this;
-       
-    http.getReq("getGoodClassList/", function (res) {
-     
+    var that = this;      
+    let url = 'getGoodClassList/';
+    let data = {}
+
+    http.postReq(url, data).then(function (res) {      
       that.setData({
         classifyItems: res.result
       })

@@ -42,7 +42,8 @@ Page({
         city: e.detail.userInfo.city,
         gender: e.detail.userInfo.gender,
       }
-      http.postReq(url, data, function (res) {
+      http.postReq(url, data).then(function (res) {  
+      //http.postReq(url, data, function (res) {
          //插入登录的用户的相关信息到数据库
         console.log(res)
         app.globalData.userInfo = e.detail.userInfo
@@ -78,7 +79,8 @@ Page({
     let data = {
       openid: app.globalData.openid
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+    //http.postReq(url, data, function (res) {
       //console.log('getuserInfo/index/')
       //console.log(res)
       app.globalData.userInfo = res;

@@ -56,7 +56,8 @@ Page({
     let data = {
       uid: this.data.uid,
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+    //http.postReq(url, data, function (res) {
       //console.log('res===')
       //console.log(res)
       that.setData({
@@ -127,7 +128,8 @@ Page({
           orders: JSON.stringify(orders),
           address: JSON.stringify(address)
         }
-        http.postReq(url, data, function (res) {
+        http.postReq(url, data).then(function (res) {  
+       // http.postReq(url, data, function (res) {
          // console.log('res===')
          // console.log(res)
 

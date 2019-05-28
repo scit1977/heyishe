@@ -95,7 +95,8 @@ Page({
       goodsId: goodsId,
       
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+    //http.postReq(url, data, function (res) {
      // console.log(res)
      
 
@@ -108,7 +109,8 @@ Page({
       id: goodsId,
 
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+   // http.postReq(url, data, function (res) {
      // data=res.reslt
       var goodsItem = res.result;
       var imgs = res.imgs;

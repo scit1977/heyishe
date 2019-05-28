@@ -32,7 +32,8 @@ Page({
       type: 1,
       page: 1
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+   // http.postReq(url, data, function (res) {
      // console.log(res)
       that.setData({
         // loadingCount: orderList.length,

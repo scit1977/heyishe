@@ -35,7 +35,8 @@ Page({
     let data = {
       cardid: that.data.cardnum
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+    //http.postReq(url, data, function (res) {
       //console.log(res)
       res=res.result
       that.setData({
@@ -73,7 +74,8 @@ Page({
     let data = {
       cardid: that.data.cardId
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+  //  http.postReq(url, data, function (res) {
       console.log(res)
       console.log(res.timestamp)
       console.log(res.nonce_str)
@@ -132,7 +134,8 @@ Page({
     let data = {
       uid: this.data.uid
     }
-    http.postReq(url, data, function (res) {
+    http.postReq(url, data).then(function (res) {  
+    //http.postReq(url, data, function (res) {
       console.log(res)
       that.setData({
         // loadingCount: orderList.length,
