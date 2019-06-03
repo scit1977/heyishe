@@ -38,10 +38,21 @@
 <view class="bg-white padding cauni-details-box">
 
     <block wx:for-items="{{imgs}}" wx:key="name">
-       <image src="{{item}}" mode="widthFix" width="375px"/> 
+       <image src="{{item}}" mode="widthFix" width="750rpx"/> 
     </block>
      <template is="wxParse"  data="{{wxParseData:content.nodes}}"/>
    
+</view>
+<!-- 分享按钮 -->
+<view class="cu-bar padding justify-center bg-white margin-top solid-bottom">
+<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+ 
+    <button class='cu-btn round bg-olive button-hover'>预览海报</button>　　
+   
+     <button class='cu-btn round bg-green button-hover' bindtap='savePosterImage'>保存海报</button>
+    
+</poster>
+  
 </view>
  
 <!--TabbarBot为适配全面屏的，如果是全面屏，则底部多出一截空白-->

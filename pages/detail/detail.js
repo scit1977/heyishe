@@ -1,16 +1,20 @@
 // 参考 https://blog.csdn.net/qq_31763107/article/details/88652741
+import Poster from '../../miniprogram_dist/poster/poster';
 const http = require('../../utils/http.js');
 const app = getApp();
 var imgUrls = [];
 var detailImg = [];
 var goodsId = null;
 var goods = null;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    posterImageUrl: "",//海报地址
+    posterConfig:null,
     StatusBar: app.globalData.StatusBar + 7,
     TabbarBot: app.globalData.tabbar_bottom,
     isLike: false,
@@ -23,6 +27,19 @@ Page({
     duration: 1000, //  滑动动画时长1s
     bannerHeight: Math.ceil(350.0 / 750.0 * getApp().screenWidth),
   },
+  onPosterSuccess(e) {
+    const { detail } = e;
+    this.setData({
+      posterImageUrl: detail,     
+    })
+    wx.previewImage({
+      current: detail,
+      urls: [detail]
+    })
+  },
+  onPosterFail(err) {
+    console.error(err);
+  },
   //预览图片
   previewImage: function (e) {
     var current = e.target.dataset.src;
@@ -30,6 +47,61 @@ Page({
       current: current, // 当前显示图片的http链接  
       urls: this.data.imgUrls // 需要预览的图片http链接列表  
     })
+  },
+  /**
+ * 保存海报图片
+ */
+  savePosterImage: function () {
+    let that = this
+    wx.saveImageToPhotosAlbum({
+      filePath: that.data.posterImageUrl,
+      success(result) {
+        console.log(result)
+        wx.showModal({
+          title: '提示',
+          content: '二维码海报已存入手机相册，赶快分享到朋友圈吧',
+          showCancel: false,
+          success: function (res) {
+            that.setData({
+              isShowPosterModal: false,
+              isShow: false
+            })
+          }
+        })
+      },
+      fail: function (err) {
+        console.log(err);
+        if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+          console.log("再次发起授权");
+          wx.showModal({
+            title: '用户未授权',
+            content: '如需保存海报图片到相册，需获取授权.是否在授权管理中选中“保存到相册”?',
+            showCancel: true,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                wx.openSetting({
+                  success: function success(res) {
+                    console.log('打开设置', res.authSetting);
+                    wx.openSetting({
+                      success(settingdata) {
+                        console.log(settingdata)
+                        if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                          console.log('获取保存到相册权限成功');
+                        } else {
+                          console.log('获取保存到相册权限失败');
+                        }
+                      }
+                    })
+
+                  }
+                });
+              }
+            }
+          })
+        }
+      }
+    });
   },
   toBack() {
     wx.navigateBack({
@@ -103,6 +175,7 @@ Page({
     })
   },
   goodsInfoShow: function (success) {
+    //初始化商品信息
     var that = this;
     let url = 'getGoodsInfo/';
     let data = {
@@ -114,8 +187,8 @@ Page({
      // data=res.reslt
       var goodsItem = res.result;
       var imgs = res.imgs;
-     // console.log('goodsItem=')
-     // console.log(goodsItem)
+      console.log(goodsItem.xcode)
+      
       var WxParse = require('../../wxParse/wxParse.js');
       WxParse.wxParse('content', 'html', goodsItem.p_detail, that, 25);
       goods = {
@@ -132,10 +205,125 @@ Page({
         count: 1,
         totalMoney: goodsItem.price,
       }
+      //分享海报数据
+      var myconfig = {
+        width: 750,
+        height: 1334,
+        backgroundColor: '#fff',
+        debug: false,
+        blocks: [
+          {
+            width: 690,
+            height: 800,
+            x: 30,
+            y: 160,
+            borderWidth: 2,
+            borderColor: '#f0c2a0',
+            borderRadius: 20,
+          },
+          {
+            width: 634,
+            height: 74,
+            x: 59,
+            y: 770,
+            backgroundColor: '#fff',
+            opacity: 0.5,
+            zIndex: 100,
+          },
+        ],
+        texts: [
 
+
+          {
+            x: 59,
+            y: 660,
+            fontSize: 38,
+            baseLine: 'middle',
+            text: goodsItem.name,
+            width: 570,
+            lineNum: 1,
+            color: '#080808',
+            zIndex: 200,
+          },
+          {
+            x: 59,
+            y: 750,
+            baseLine: 'middle',
+            text: [
+              {
+                text: '价格',
+                fontSize: 28,
+                color: '#ec1731',
+              },
+              {
+                text: goodsItem.price,
+                fontSize: 36,
+                color: '#ec1731',
+                marginLeft: 30,
+              }
+            ]
+          },
+
+          {
+            x: 59,
+            y: 825,
+            baseLine: 'middle',
+            text: [
+              {
+                text: goodsItem.p_detail,
+                fontSize: 28,
+                color: '#080808',
+              },
+
+            ]
+          },
+          {
+            x: 360,
+            y: 1065,
+            baseLine: 'top',
+            text: '长按识别小程序码',
+            fontSize: 38,
+            color: '#080808',
+          },
+          {
+            x: 360,
+            y: 1123,
+            baseLine: 'top',
+            text: '和一之家，健康之源',
+            fontSize: 28,
+            color: '#929292',
+          },
+        ],
+        images: [
+          {
+            width: 125,
+            height: 125,
+            x: 313,
+            y: 30,
+            url: 'https://t.heyishe.cn/log125.jpg',
+          },
+          {
+            width: 640,
+            height: 430,
+            x: 59,
+            y: 172,
+            url: imgs[0],
+          },
+          {
+            width: 220,
+            height: 220,
+            x: 92,
+            y: 1020,
+            url: goodsItem.xcode,
+          }
+         
+        ]
+
+      }
       that.setData({
         goods: goods,
-        imgs: imgs
+        imgs: imgs,
+        posterConfig:myconfig
       })
     })
    

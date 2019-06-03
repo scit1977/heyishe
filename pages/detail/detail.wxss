@@ -86,6 +86,7 @@
   left: 20px;
   top: -30px;
   border-radius: 20rpx;
+  
 }
 .image-close {
   width: 40rpx;

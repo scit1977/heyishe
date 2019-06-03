@@ -68,21 +68,28 @@ Page({
           title: '温馨提示',
           content: '亲，请先完善您的个人信息哦。',
           text: 'center',
-          complete() {
-            wx.navigateTo({
-              url: '/pages/address/address'
-            })
+          success:function(res) {
+            if (res.confirm){
+                wx.navigateTo({
+                 url: '/pages/address/address'
+              })
+            }else if (res.cancel)
+            {
+              that.setData({
+                balance: 0,
+                tname: that.data.userInfo.nickName
+              })
+            }
+           // wx.navigateTo({
+            //  url: '/pages/address/address'
+           // })
           }
         })
       } else {
-        wx.setStorage({
+       /* wx.setStorage({
           key: 'address',
-          data: res,
-          success() {
-            // wx.navigateBack();
-           // console.log('ok' + res)
-          }
-        })
+          data: res,         
+        })*/
         that.setData({
           balance: res.result.balance,
           tname: res.result.name
